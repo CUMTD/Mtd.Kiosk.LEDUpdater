@@ -1,31 +1,24 @@
-using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Mtd.Kiosk.LEDUpdater.IPDisplaysAPI;
+using Mtd.Kiosk.LEDUpdater.Service;
 using Mtd.Kiosk.LEDUpdater.Service.Extensions;
-using Mtd.Kiosk.LEDUpdaterService.Service;
 using Serilog;
 
 try
 {
 	var host = Host
 		.CreateDefaultBuilder(args)
-		.ConfigureAppConfiguration((context, config) =>
-		{
-			var basePath = context.HostingEnvironment.ContentRootPath;
-			config
-				.SetBasePath(basePath)
-				.AddJsonFile("appsettings.json", true, true); // TODO
-
-			if (context.HostingEnvironment.IsDevelopment())
-			{
-				var assembly = Assembly.GetExecutingAssembly();
-				config.AddUserSecrets(assembly, true);
-			}
-		})
-
 		.ConfigureServices((context, services) =>
 		{
+			_ = services
+				.Configure<IpDisplaysApiClientConfig>(context.Configuration.GetSection(IpDisplaysApiClientConfig.ConfigSectionName))
+				.AddOptionsWithValidateOnStart<IpDisplaysApiClientConfig>(IpDisplaysApiClientConfig.ConfigSectionName)
+				.Bind(context.Configuration.GetSection(IpDisplaysApiClientConfig.ConfigSectionName));
+
+			_ = services.AddScoped<IpDisplaysApiClient>();
+
 			_ = services
 				.Configure<HostOptions>(hostOptions =>
 				{
