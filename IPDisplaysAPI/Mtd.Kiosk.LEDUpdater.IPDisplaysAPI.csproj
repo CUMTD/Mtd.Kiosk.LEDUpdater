@@ -13,7 +13,6 @@
     <PackageReference Include="System.ServiceModel.Http" />
     <PackageReference Include="System.ServiceModel.NetTcp" />
     <PackageReference Include="System.ServiceModel.Security" />
-	
   </ItemGroup>
 
 </Project>

@@ -20,7 +20,6 @@
     <PackageReference Include="Microsoft.Extensions.Http" />
     <PackageReference Include="Serilog" />
     <PackageReference Include="Serilog.AspNetCore" />
-
   </ItemGroup>
 
   <ItemGroup>
@@ -32,7 +31,5 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
-
 
 </Project>
