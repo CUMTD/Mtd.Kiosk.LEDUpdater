@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Mtd.Kiosk.LEDUpdater.Service": {
+	  "commandName": "Project",
+	  "environmentVariables": {
+		"DOTNET_ENVIRONMENT": "Development"
+	  }
+    }
+  }
+}

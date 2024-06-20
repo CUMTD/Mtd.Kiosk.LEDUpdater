@@ -5,6 +5,7 @@
 	  <Nullable>enable</Nullable>
 	  <ImplicitUsings>enable</ImplicitUsings>
 	  <OutputType>Exe</OutputType>
+	  <UserSecretsId>415bd874-7b19-483e-8387-f1e7451e91ec</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\IPDisplaysAPI\Mtd.Kiosk.LEDUpdater.IPDisplaysAPI.csproj" />
+    <ProjectReference Include="..\Mtd.Kiosk.LEDUpdater.SanityClient\Mtd.Kiosk.LEDUpdater.SanityAPI.csproj" />
   </ItemGroup>
 
   <ItemGroup>
