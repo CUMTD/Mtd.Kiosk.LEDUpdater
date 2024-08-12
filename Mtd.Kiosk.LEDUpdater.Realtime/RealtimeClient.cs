@@ -1,3 +1,4 @@
+using System.Collections.Immutable;
 using System.Text.Json;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -31,41 +32,46 @@ public class RealtimeClient
 	{
 		var request = new HttpRequestMessage(HttpMethod.Get, $"{_config.GeneralMessagingUrl}");
 
-		var deserializedMessages = new List<GeneralMessage>();
-
-		HttpResponseMessage? response;
+		HttpResponseMessage? response = null;
 		try
 		{
-			request.Headers.Add("X-ApiKey", _config.XApiKey);                       // TODO: authenticate at the interface level with Polly
+			request.Headers.Add("X-ApiKey", _config.XApiKey);
 			response = await _httpClient.SendAsync(request, cancellationToken);
-			response.EnsureSuccessStatusCode();
-			var responseContent = await response.Content.ReadAsStringAsync();
 
-			_logger.LogInformation("Response for general messages: {responseContent}", responseContent);
-
-			if (string.IsNullOrWhiteSpace(responseContent))
-			{
-				_logger.LogWarning("Empty response for general messages.");
-				return deserializedMessages;
-			}
-
-			try
-			{
-				deserializedMessages = JsonSerializer.Deserialize<List<GeneralMessage>>(responseContent) ?? new List<GeneralMessage>();
-			}
-			catch (Exception ex)
-			{
-				_logger.LogError(ex, "Failed to deserialize general messages");
-				throw new Exception("Failed to deserialize general messages", ex);
-			}
+			response.EnsureSuccessStatusCode(); // throws HttpRequestException if not successful
+		}
+		catch (HttpRequestException ex)
+		{
+			_logger.LogError(ex, "General message HTTP request did not return a good status code: {code}", response?.StatusCode);
+			throw new Exception($"General message HTTP request did not return a good status code: {response?.StatusCode}", ex);
 		}
 		catch (Exception ex)
 		{
 			_logger.LogError(ex, "Failed to fetch general messages");
 			throw new Exception("Failed to fetch general messages", ex);
 		}
-		return deserializedMessages;
+
+		try
+		{
+			var responseStream = await response.Content.ReadAsStreamAsync(cancellationToken);
+
+			if (responseStream.Length == 0)
+			{
+				_logger.LogWarning("Empty response for general messages.");
+				return [];
+			}
+
+			var deserialized = await JsonSerializer.DeserializeAsync<IEnumerable<GeneralMessage>>(responseStream, cancellationToken: cancellationToken);
+			return (deserialized ?? []).ToImmutableArray();
+
+		}
+		catch (Exception ex)
+		{
+			_logger.LogError(ex, "Failed to deserialize general messages");
+			throw new Exception("Failed to deserialize general messages", ex);
+		}
 	}
+
 	/// <summary>
 	/// Gets the departures for a given stop ID from the Kiosk API.
 	/// </summary>
@@ -75,40 +81,45 @@ public class RealtimeClient
 	public async Task<IReadOnlyCollection<Departure>> GetDeparturesForStopIdAsync(string stopId, CancellationToken cancellationToken)
 	{
 		ArgumentException.ThrowIfNullOrWhiteSpace(stopId, nameof(stopId));
+
 		var request = new HttpRequestMessage(HttpMethod.Get, $"{_config.DeparturesUrl}/{stopId}");
 
-		var deserializedDepartures = new List<Departure>();
-		HttpResponseMessage? response;
+		HttpResponseMessage? response = null;
 		try
 		{
-			request.Headers.Add("X-ApiKey", _config.XApiKey);                       // TODO: authenticate at the interface level w/ polly
+			request.Headers.Add("X-ApiKey", _config.XApiKey);
 			response = await _httpClient.SendAsync(request, cancellationToken);
 			response.EnsureSuccessStatusCode();
-			var responseContent = await response.Content.ReadAsStringAsync();
-
-			if (string.IsNullOrWhiteSpace(responseContent))
-			{
-				_logger.LogWarning("Empty response for stop {stopId}.", stopId);
-				return deserializedDepartures;
-			}
-
-			try
-			{
-
-				deserializedDepartures = JsonSerializer.Deserialize<List<Departure>>(responseContent) ?? new List<Departure>();
-			}
-			catch (Exception ex)
-			{
-				_logger.LogError(ex, "Failed to deserialize departures for stop {stopId}.", stopId);
-				throw new Exception("Failed to deserialize departures for stop {stopId}.", ex);
-			}
-
+			var responseContent = await response.Content.ReadAsStringAsync(cancellationToken);
+		}
+		catch (HttpRequestException ex)
+		{
+			_logger.LogError(ex, "Departures message HTTP request did not return a good status code: {code}", response?.StatusCode);
+			throw new Exception($"Departures message HTTP request did not return a good status code: {response?.StatusCode}", ex);
 		}
 		catch (Exception ex)
 		{
-			_logger.LogError(ex, "Failed to fetch deserializedDepartures for stop {stopId}.", stopId);
-			throw new Exception("Failed to fetch deserializedDepartures for stop {stopId}.", ex);
+			_logger.LogError(ex, "Failed to fetch Departures for stop {stopId}.", stopId);
+			throw new Exception($"Failed to fetch Departures for stop {stopId}.", ex);
 		}
-		return deserializedDepartures;
+
+		try
+		{
+			var responseStream = await response.Content.ReadAsStreamAsync(cancellationToken);
+
+			if (responseStream.Length == 0)
+			{
+				_logger.LogWarning("Empty response for stop {stopId}.", stopId);
+				return [];
+			}
+
+			var deserialized = await JsonSerializer.DeserializeAsync<IEnumerable<Departure>>(responseStream, cancellationToken: cancellationToken);
+			return (deserialized ?? []).ToImmutableArray();
+		}
+		catch (Exception ex)
+		{
+			_logger.LogError(ex, "Failed to deserialize departures for stop {stopId}.", stopId);
+			throw new Exception($"Failed to deserialize departures for stop {stopId}.", ex);
+		}
 	}
 }
