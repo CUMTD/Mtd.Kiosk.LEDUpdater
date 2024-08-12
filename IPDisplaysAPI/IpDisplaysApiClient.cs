@@ -8,13 +8,14 @@ using Mtd.Kiosk.LEDUpdater.IpDisplaysApi.Models;
 namespace Mtd.Kiosk.LEDUpdater.IpDisplaysApi;
 
 // TODO: Use NuGet package instead of adding service reference
+// TODO: Log everything
 
 public class IPDisplaysApiClient
 {
 
-	private readonly ILogger<IPDisplaysApiClient> _logger;
 	private readonly Uri _uri;
 	private readonly TimeSpan _timeout;
+	private readonly ILogger<IPDisplaysApiClient> _logger;
 
 	private const int START_TIMER = 96;
 	private const int STOP_TIMER = 94;
@@ -37,7 +38,7 @@ public class IPDisplaysApiClient
 
 	#region Helpers
 
-	public SignSvrSoapPortClient GetSoapClient()
+	private SignSvrSoapPortClient GetSoapClient()
 	{
 		var binding = new BasicHttpBinding
 		{
@@ -59,7 +60,7 @@ public class IPDisplaysApiClient
 	/// </summary>
 	/// <param name="dataItems">A dictionary of dataItem names and their new values</param>
 	/// <returns></returns>
-	public string SerializeUpdateDataItemsXmlString(Dictionary<string, string> dataItems)
+	private string SerializeUpdateDataItemsXmlString(Dictionary<string, string> dataItems)
 	{
 		var XMLdataItems = new UpdateDataItemValuesXml();
 
@@ -73,7 +74,9 @@ public class IPDisplaysApiClient
 		using var textWriter = new StringWriter();
 		serializer.Serialize(textWriter, XMLdataItems);
 
-		return textWriter.ToString();
+		var xml = textWriter.ToString();
+		_logger.LogTrace("Serialized {xml} data items for sign.", xml);
+		return xml;
 	}
 
 	#endregion Helpers
