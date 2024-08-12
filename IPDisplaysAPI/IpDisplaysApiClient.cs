@@ -7,6 +7,8 @@ using Mtd.Kiosk.LEDUpdater.IpDisplaysApi.Models;
 
 namespace Mtd.Kiosk.LEDUpdater.IpDisplaysApi;
 
+// TODO: Use NuGet package instead of adding service reference
+
 public class IPDisplaysApiClient
 {
 
@@ -59,16 +61,16 @@ public class IPDisplaysApiClient
 	/// <returns></returns>
 	public string SerializeUpdateDataItemsXmlString(Dictionary<string, string> dataItems)
 	{
-		UpdateDataItemValuesXml XMLdataItems = new UpdateDataItemValuesXml();
+		var XMLdataItems = new UpdateDataItemValuesXml();
 
 		foreach (var item in dataItems)
 		{
 			XMLdataItems.DataItems.Add(new DataItem { Name = item.Key, Value = item.Value });
 		}
 
-		XmlSerializer serializer = new XmlSerializer(typeof(UpdateDataItemValuesXml));
+		var serializer = new XmlSerializer(typeof(UpdateDataItemValuesXml));
 
-		using StringWriter textWriter = new StringWriter();
+		using var textWriter = new StringWriter();
 		serializer.Serialize(textWriter, XMLdataItems);
 
 		return textWriter.ToString();
