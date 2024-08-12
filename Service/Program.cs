@@ -1,8 +1,9 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Mtd.Kiosk.LEDUpdater.IPDisplaysAPI;
-using Mtd.Kiosk.LEDUpdater.SanityAPI;
+using Mtd.Kiosk.LEDUpdater.IpDisplaysApi;
+using Mtd.Kiosk.LEDUpdater.Realtime;
+using Mtd.Kiosk.LEDUpdater.SanityApi;
 using Mtd.Kiosk.LEDUpdater.Service;
 using Mtd.Kiosk.LEDUpdater.Service.Extensions;
 using Serilog;
@@ -19,17 +20,23 @@ try
 		.ConfigureServices((context, services) =>
 		{
 			_ = services
-				.Configure<IpDisplaysApiClientConfig>(context.Configuration.GetSection(IpDisplaysApiClientConfig.ConfigSectionName))
-				.AddOptionsWithValidateOnStart<IpDisplaysApiClientConfig>(IpDisplaysApiClientConfig.ConfigSectionName)
-				.Bind(context.Configuration.GetSection(IpDisplaysApiClientConfig.ConfigSectionName));
+				.Configure<IPDisplaysApiClientConfig>(context.Configuration.GetSection(IPDisplaysApiClientConfig.ConfigSectionName))
+				.AddOptionsWithValidateOnStart<IPDisplaysApiClientConfig>(IPDisplaysApiClientConfig.ConfigSectionName)
+				.Bind(context.Configuration.GetSection(IPDisplaysApiClientConfig.ConfigSectionName));
 
 			_ = services
 				.Configure<SanityClientConfig>(context.Configuration.GetSection(SanityClientConfig.ConfigSectionName))
 				.AddOptionsWithValidateOnStart<SanityClientConfig>(SanityClientConfig.ConfigSectionName)
 				.Bind(context.Configuration.GetSection(SanityClientConfig.ConfigSectionName));
 
-			_ = services.AddScoped<IpDisplaysApiClient>();
+			_ = services
+				.Configure<RealtimeClientConfig>(context.Configuration.GetSection(RealtimeClientConfig.ConfigSectionName))
+				.AddOptionsWithValidateOnStart<RealtimeClientConfig>(RealtimeClientConfig.ConfigSectionName)
+				.Bind(context.Configuration.GetSection(RealtimeClientConfig.ConfigSectionName));
+
+			_ = services.AddScoped<IPDisplaysApiClientFactory>();
 			_ = services.AddScoped<SanityClient>();
+			_ = services.AddScoped<RealtimeClient>();
 
 			_ = services
 				.Configure<HostOptions>(hostOptions =>
@@ -37,13 +44,12 @@ try
 					hostOptions.BackgroundServiceExceptionBehavior = BackgroundServiceExceptionBehavior.StopHost;
 				});
 
-			_ = services.AddHostedService<LEDUpdaterService>();
+			_ = services.AddHttpClient();
+
+
+			_ = services.AddHostedService<LedUpdaterService>();
 
 		})
-
-
-
-
 		.AddOSSpecificService()
 		.Build();
 	// print out if we're in development environment

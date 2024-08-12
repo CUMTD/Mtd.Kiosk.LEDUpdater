@@ -11,7 +11,7 @@ internal static class IHostBuilderExtensions
 		{
 			builder.UseWindowsService(options =>
 			{
-				options.ServiceName = "Mtd.Kiosk.LEDUpdater";
+				options.ServiceName = "Mtd.KioskDocument.LEDUpdater";
 			});
 		}
 		else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))

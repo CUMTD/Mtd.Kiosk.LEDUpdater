@@ -1,10 +1,10 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Mtd.Kiosk.LEDUpdater.SanityAPI;
+namespace Mtd.Kiosk.LEDUpdater.SanityApi;
 
 public class SanityClientConfig
 {
-	public const string ConfigSectionName = "SanityAPI";
+	public const string ConfigSectionName = "SanityApi";
 
 	[Required]
 	public required string ProjectId { get; set; }

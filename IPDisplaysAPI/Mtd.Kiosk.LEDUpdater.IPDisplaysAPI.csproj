@@ -15,4 +15,8 @@
     <PackageReference Include="System.ServiceModel.Security" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Mtd.Kiosk.LEDUpdater.Realtime\Mtd.Kiosk.LedUpdater.Realtime.csproj" />
+  </ItemGroup>
+
 </Project>
