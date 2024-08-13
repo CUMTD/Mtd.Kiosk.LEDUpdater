@@ -7,245 +7,245 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Mtd.Kiosk.LEDUpdater.IpDisplaysApi
+namespace Mtd.Kiosk.LedUpdater.IpDisplaysApi
 {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://tempuri.org/wsdl/", ConfigurationName="Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://tempuri.org/wsdl/", ConfigurationName="Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort")]
     public interface SignSvrSoapPort
     {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.SetLayoutState", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SetLayoutStateResponse> SetLayoutStateAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SetLayoutStateRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.SetLayoutStateResponse> SetLayoutStateAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.SetLayoutStateRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.SetMessageState", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SetMessageStateResponse> SetMessageStateAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SetMessageStateRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.SetMessageStateResponse> SetMessageStateAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.SetMessageStateRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.GetConditions", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetConditionsResponse> GetConditionsAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetConditionsRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetConditionsResponse> GetConditionsAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetConditionsRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.GetConditionByName", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetConditionByNameResponse> GetConditionByNameAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetConditionByNameRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetConditionByNameResponse> GetConditionByNameAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetConditionByNameRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.GetConditionByID", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetConditionByIDResponse> GetConditionByIDAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetConditionByIDRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetConditionByIDResponse> GetConditionByIDAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetConditionByIDRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.RemoveConditionByName", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveConditionByNameResponse> RemoveConditionByNameAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveConditionByNameRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveConditionByNameResponse> RemoveConditionByNameAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveConditionByNameRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.RemoveConditionByID", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveConditionByIDResponse> RemoveConditionByIDAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveConditionByIDRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveConditionByIDResponse> RemoveConditionByIDAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveConditionByIDRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.AddUpdateCondition", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateConditionResponse> AddUpdateConditionAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateConditionRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateConditionResponse> AddUpdateConditionAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateConditionRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.GetThresholds", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetThresholdsResponse> GetThresholdsAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetThresholdsRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetThresholdsResponse> GetThresholdsAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetThresholdsRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.GetThresholdByName", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetThresholdByNameResponse> GetThresholdByNameAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetThresholdByNameRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetThresholdByNameResponse> GetThresholdByNameAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetThresholdByNameRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.GetThresholdByID", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetThresholdByIDResponse> GetThresholdByIDAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetThresholdByIDRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetThresholdByIDResponse> GetThresholdByIDAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetThresholdByIDRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.RemoveThresholdByName", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveThresholdByNameResponse> RemoveThresholdByNameAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveThresholdByNameRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveThresholdByNameResponse> RemoveThresholdByNameAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveThresholdByNameRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.RemoveThresholdByID", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveThresholdByIDResponse> RemoveThresholdByIDAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveThresholdByIDRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveThresholdByIDResponse> RemoveThresholdByIDAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveThresholdByIDRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.AddUpdateThreshold", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateThresholdResponse> AddUpdateThresholdAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateThresholdRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateThresholdResponse> AddUpdateThresholdAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateThresholdRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.GetMessages", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetMessagesResponse> GetMessagesAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetMessagesRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetMessagesResponse> GetMessagesAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetMessagesRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.GetMessageByTargetOrder", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetMessageByTargetOrderResponse> GetMessageByTargetOrderAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetMessageByTargetOrderRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetMessageByTargetOrderResponse> GetMessageByTargetOrderAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetMessageByTargetOrderRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.GetMessageByID", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetMessageByIDResponse> GetMessageByIDAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetMessageByIDRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetMessageByIDResponse> GetMessageByIDAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetMessageByIDRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.RemoveMessageByTargetOrder", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveMessageByTargetOrderResponse> RemoveMessageByTargetOrderAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveMessageByTargetOrderRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveMessageByTargetOrderResponse> RemoveMessageByTargetOrderAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveMessageByTargetOrderRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.RemoveMessageByID", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveMessageByIDResponse> RemoveMessageByIDAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveMessageByIDRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveMessageByIDResponse> RemoveMessageByIDAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveMessageByIDRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.AddUpdateMessage", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateMessageResponse> AddUpdateMessageAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateMessageRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateMessageResponse> AddUpdateMessageAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateMessageRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.GetImages", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetImagesResponse> GetImagesAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetImagesRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetImagesResponse> GetImagesAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetImagesRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.DeleteImage", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.DeleteImageResponse> DeleteImageAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.DeleteImageRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.DeleteImageResponse> DeleteImageAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.DeleteImageRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.UploadImage", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UploadImageResponse> UploadImageAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UploadImageRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.UploadImageResponse> UploadImageAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.UploadImageRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.UpdateSignInfo2", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UpdateSignInfo2Response> UpdateSignInfo2Async(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UpdateSignInfo2Request request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.UpdateSignInfo2Response> UpdateSignInfo2Async(Mtd.Kiosk.LedUpdater.IpDisplaysApi.UpdateSignInfo2Request request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.GetSignInfo2", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetSignInfo2Response> GetSignInfo2Async(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetSignInfo2Request request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetSignInfo2Response> GetSignInfo2Async(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetSignInfo2Request request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.GetSignInfo", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetSignInfoResponse> GetSignInfoAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetSignInfoRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetSignInfoResponse> GetSignInfoAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetSignInfoRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.GetDateTime", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetDateTimeResponse> GetDateTimeAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetDateTimeRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetDateTimeResponse> GetDateTimeAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetDateTimeRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.SetDateTime", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SetDateTimeResponse> SetDateTimeAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SetDateTimeRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.SetDateTimeResponse> SetDateTimeAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.SetDateTimeRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.GetScreenSnapshot", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetScreenSnapshotResponse> GetScreenSnapshotAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetScreenSnapshotRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetScreenSnapshotResponse> GetScreenSnapshotAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetScreenSnapshotRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.SendCommand", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SendCommandResponse> SendCommandAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SendCommandRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.SendCommandResponse> SendCommandAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.SendCommandRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.SendCommand2", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SendCommand2Response> SendCommand2Async(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SendCommand2Request request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.SendCommand2Response> SendCommand2Async(Mtd.Kiosk.LedUpdater.IpDisplaysApi.SendCommand2Request request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.GetDataItems", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetDataItemsResponse> GetDataItemsAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetDataItemsRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetDataItemsResponse> GetDataItemsAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetDataItemsRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.GetDataItemByName", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetDataItemByNameResponse> GetDataItemByNameAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetDataItemByNameRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetDataItemByNameResponse> GetDataItemByNameAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetDataItemByNameRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.GetDataItemByID", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetDataItemByIDResponse> GetDataItemByIDAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetDataItemByIDRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetDataItemByIDResponse> GetDataItemByIDAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetDataItemByIDRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.UpdateDataItemValues", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UpdateDataItemValuesResponse> UpdateDataItemValuesAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UpdateDataItemValuesRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.UpdateDataItemValuesResponse> UpdateDataItemValuesAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.UpdateDataItemValuesRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.UpdateDataItemValueByName", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UpdateDataItemValueByNameResponse> UpdateDataItemValueByNameAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UpdateDataItemValueByNameRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.UpdateDataItemValueByNameResponse> UpdateDataItemValueByNameAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.UpdateDataItemValueByNameRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.UpdateDataItemValueByID", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UpdateDataItemValueByIDResponse> UpdateDataItemValueByIDAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UpdateDataItemValueByIDRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.UpdateDataItemValueByIDResponse> UpdateDataItemValueByIDAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.UpdateDataItemValueByIDRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.RemoveDataItemByName", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveDataItemByNameResponse> RemoveDataItemByNameAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveDataItemByNameRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveDataItemByNameResponse> RemoveDataItemByNameAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveDataItemByNameRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.RemoveDataItemByID", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveDataItemByIDResponse> RemoveDataItemByIDAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveDataItemByIDRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveDataItemByIDResponse> RemoveDataItemByIDAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveDataItemByIDRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.AddUpdateDataItem", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateDataItemResponse> AddUpdateDataItemAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateDataItemRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateDataItemResponse> AddUpdateDataItemAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateDataItemRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.GetZoneByName", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetZoneByNameResponse> GetZoneByNameAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetZoneByNameRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetZoneByNameResponse> GetZoneByNameAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetZoneByNameRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.GetZoneByID", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetZoneByIDResponse> GetZoneByIDAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetZoneByIDRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetZoneByIDResponse> GetZoneByIDAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetZoneByIDRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.RemoveZoneByName", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveZoneByNameResponse> RemoveZoneByNameAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveZoneByNameRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveZoneByNameResponse> RemoveZoneByNameAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveZoneByNameRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.RemoveZoneByID", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveZoneByIDResponse> RemoveZoneByIDAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveZoneByIDRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveZoneByIDResponse> RemoveZoneByIDAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveZoneByIDRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.AddUpdateZone", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateZoneResponse> AddUpdateZoneAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateZoneRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateZoneResponse> AddUpdateZoneAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateZoneRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.GetLayoutParentID", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetLayoutParentIDResponse> GetLayoutParentIDAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetLayoutParentIDRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetLayoutParentIDResponse> GetLayoutParentIDAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetLayoutParentIDRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.GetLayoutByName", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetLayoutByNameResponse> GetLayoutByNameAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetLayoutByNameRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetLayoutByNameResponse> GetLayoutByNameAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetLayoutByNameRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.GetLayoutById", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetLayoutByIdResponse> GetLayoutByIdAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetLayoutByIdRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetLayoutByIdResponse> GetLayoutByIdAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetLayoutByIdRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.GetLayouts", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetLayoutsResponse> GetLayoutsAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetLayoutsRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetLayoutsResponse> GetLayoutsAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetLayoutsRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.RemoveLayoutByName", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveLayoutByNameResponse> RemoveLayoutByNameAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveLayoutByNameRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveLayoutByNameResponse> RemoveLayoutByNameAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveLayoutByNameRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.RemoveLayoutById", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveLayoutByIdResponse> RemoveLayoutByIdAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveLayoutByIdRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveLayoutByIdResponse> RemoveLayoutByIdAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveLayoutByIdRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/action/SignSvr.AddUpdateLayout", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateLayoutResponse> AddUpdateLayoutAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateLayoutRequest request);
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateLayoutResponse> AddUpdateLayoutAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateLayoutRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -2415,13 +2415,13 @@ namespace Mtd.Kiosk.LEDUpdater.IpDisplaysApi
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
-    public interface SignSvrSoapPortChannel : Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort, System.ServiceModel.IClientChannel
+    public interface SignSvrSoapPortChannel : Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
-    public partial class SignSvrSoapPortClient : System.ServiceModel.ClientBase<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort>, Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort
+    public partial class SignSvrSoapPortClient : System.ServiceModel.ClientBase<Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort>, Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort
     {
         
         /// <summary>
@@ -2465,504 +2465,504 @@ namespace Mtd.Kiosk.LEDUpdater.IpDisplaysApi
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SetLayoutStateResponse> Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort.SetLayoutStateAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SetLayoutStateRequest request)
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.SetLayoutStateResponse> Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort.SetLayoutStateAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.SetLayoutStateRequest request)
         {
             return base.Channel.SetLayoutStateAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SetLayoutStateResponse> SetLayoutStateAsync(string layoutName, int EnabledState)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.SetLayoutStateResponse> SetLayoutStateAsync(string layoutName, int EnabledState)
         {
-            Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SetLayoutStateRequest inValue = new Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SetLayoutStateRequest();
+            Mtd.Kiosk.LedUpdater.IpDisplaysApi.SetLayoutStateRequest inValue = new Mtd.Kiosk.LedUpdater.IpDisplaysApi.SetLayoutStateRequest();
             inValue.layoutName = layoutName;
             inValue.EnabledState = EnabledState;
-            return ((Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).SetLayoutStateAsync(inValue);
+            return ((Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).SetLayoutStateAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SetMessageStateResponse> Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort.SetMessageStateAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SetMessageStateRequest request)
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.SetMessageStateResponse> Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort.SetMessageStateAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.SetMessageStateRequest request)
         {
             return base.Channel.SetMessageStateAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SetMessageStateResponse> SetMessageStateAsync(int targetId, int orderId, int EnabledState)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.SetMessageStateResponse> SetMessageStateAsync(int targetId, int orderId, int EnabledState)
         {
-            Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SetMessageStateRequest inValue = new Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SetMessageStateRequest();
+            Mtd.Kiosk.LedUpdater.IpDisplaysApi.SetMessageStateRequest inValue = new Mtd.Kiosk.LedUpdater.IpDisplaysApi.SetMessageStateRequest();
             inValue.targetId = targetId;
             inValue.orderId = orderId;
             inValue.EnabledState = EnabledState;
-            return ((Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).SetMessageStateAsync(inValue);
+            return ((Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).SetMessageStateAsync(inValue);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetConditionsResponse> GetConditionsAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetConditionsRequest request)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetConditionsResponse> GetConditionsAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetConditionsRequest request)
         {
             return base.Channel.GetConditionsAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetConditionByNameResponse> GetConditionByNameAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetConditionByNameRequest request)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetConditionByNameResponse> GetConditionByNameAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetConditionByNameRequest request)
         {
             return base.Channel.GetConditionByNameAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetConditionByIDResponse> GetConditionByIDAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetConditionByIDRequest request)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetConditionByIDResponse> GetConditionByIDAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetConditionByIDRequest request)
         {
             return base.Channel.GetConditionByIDAsync(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveConditionByNameResponse> Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort.RemoveConditionByNameAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveConditionByNameRequest request)
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveConditionByNameResponse> Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort.RemoveConditionByNameAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveConditionByNameRequest request)
         {
             return base.Channel.RemoveConditionByNameAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveConditionByNameResponse> RemoveConditionByNameAsync(string conditionName)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveConditionByNameResponse> RemoveConditionByNameAsync(string conditionName)
         {
-            Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveConditionByNameRequest inValue = new Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveConditionByNameRequest();
+            Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveConditionByNameRequest inValue = new Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveConditionByNameRequest();
             inValue.conditionName = conditionName;
-            return ((Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).RemoveConditionByNameAsync(inValue);
+            return ((Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).RemoveConditionByNameAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveConditionByIDResponse> Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort.RemoveConditionByIDAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveConditionByIDRequest request)
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveConditionByIDResponse> Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort.RemoveConditionByIDAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveConditionByIDRequest request)
         {
             return base.Channel.RemoveConditionByIDAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveConditionByIDResponse> RemoveConditionByIDAsync(int conditionId)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveConditionByIDResponse> RemoveConditionByIDAsync(int conditionId)
         {
-            Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveConditionByIDRequest inValue = new Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveConditionByIDRequest();
+            Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveConditionByIDRequest inValue = new Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveConditionByIDRequest();
             inValue.conditionId = conditionId;
-            return ((Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).RemoveConditionByIDAsync(inValue);
+            return ((Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).RemoveConditionByIDAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateConditionResponse> Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort.AddUpdateConditionAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateConditionRequest request)
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateConditionResponse> Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort.AddUpdateConditionAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateConditionRequest request)
         {
             return base.Channel.AddUpdateConditionAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateConditionResponse> AddUpdateConditionAsync(string conditionXml)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateConditionResponse> AddUpdateConditionAsync(string conditionXml)
         {
-            Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateConditionRequest inValue = new Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateConditionRequest();
+            Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateConditionRequest inValue = new Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateConditionRequest();
             inValue.conditionXml = conditionXml;
-            return ((Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).AddUpdateConditionAsync(inValue);
+            return ((Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).AddUpdateConditionAsync(inValue);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetThresholdsResponse> GetThresholdsAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetThresholdsRequest request)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetThresholdsResponse> GetThresholdsAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetThresholdsRequest request)
         {
             return base.Channel.GetThresholdsAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetThresholdByNameResponse> GetThresholdByNameAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetThresholdByNameRequest request)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetThresholdByNameResponse> GetThresholdByNameAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetThresholdByNameRequest request)
         {
             return base.Channel.GetThresholdByNameAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetThresholdByIDResponse> GetThresholdByIDAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetThresholdByIDRequest request)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetThresholdByIDResponse> GetThresholdByIDAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetThresholdByIDRequest request)
         {
             return base.Channel.GetThresholdByIDAsync(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveThresholdByNameResponse> Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort.RemoveThresholdByNameAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveThresholdByNameRequest request)
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveThresholdByNameResponse> Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort.RemoveThresholdByNameAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveThresholdByNameRequest request)
         {
             return base.Channel.RemoveThresholdByNameAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveThresholdByNameResponse> RemoveThresholdByNameAsync(string thresholdName)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveThresholdByNameResponse> RemoveThresholdByNameAsync(string thresholdName)
         {
-            Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveThresholdByNameRequest inValue = new Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveThresholdByNameRequest();
+            Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveThresholdByNameRequest inValue = new Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveThresholdByNameRequest();
             inValue.thresholdName = thresholdName;
-            return ((Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).RemoveThresholdByNameAsync(inValue);
+            return ((Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).RemoveThresholdByNameAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveThresholdByIDResponse> Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort.RemoveThresholdByIDAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveThresholdByIDRequest request)
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveThresholdByIDResponse> Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort.RemoveThresholdByIDAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveThresholdByIDRequest request)
         {
             return base.Channel.RemoveThresholdByIDAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveThresholdByIDResponse> RemoveThresholdByIDAsync(int thresholdId)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveThresholdByIDResponse> RemoveThresholdByIDAsync(int thresholdId)
         {
-            Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveThresholdByIDRequest inValue = new Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveThresholdByIDRequest();
+            Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveThresholdByIDRequest inValue = new Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveThresholdByIDRequest();
             inValue.thresholdId = thresholdId;
-            return ((Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).RemoveThresholdByIDAsync(inValue);
+            return ((Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).RemoveThresholdByIDAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateThresholdResponse> Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort.AddUpdateThresholdAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateThresholdRequest request)
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateThresholdResponse> Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort.AddUpdateThresholdAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateThresholdRequest request)
         {
             return base.Channel.AddUpdateThresholdAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateThresholdResponse> AddUpdateThresholdAsync(string thresholdXml)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateThresholdResponse> AddUpdateThresholdAsync(string thresholdXml)
         {
-            Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateThresholdRequest inValue = new Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateThresholdRequest();
+            Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateThresholdRequest inValue = new Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateThresholdRequest();
             inValue.thresholdXml = thresholdXml;
-            return ((Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).AddUpdateThresholdAsync(inValue);
+            return ((Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).AddUpdateThresholdAsync(inValue);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetMessagesResponse> GetMessagesAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetMessagesRequest request)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetMessagesResponse> GetMessagesAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetMessagesRequest request)
         {
             return base.Channel.GetMessagesAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetMessageByTargetOrderResponse> GetMessageByTargetOrderAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetMessageByTargetOrderRequest request)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetMessageByTargetOrderResponse> GetMessageByTargetOrderAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetMessageByTargetOrderRequest request)
         {
             return base.Channel.GetMessageByTargetOrderAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetMessageByIDResponse> GetMessageByIDAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetMessageByIDRequest request)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetMessageByIDResponse> GetMessageByIDAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetMessageByIDRequest request)
         {
             return base.Channel.GetMessageByIDAsync(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveMessageByTargetOrderResponse> Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort.RemoveMessageByTargetOrderAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveMessageByTargetOrderRequest request)
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveMessageByTargetOrderResponse> Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort.RemoveMessageByTargetOrderAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveMessageByTargetOrderRequest request)
         {
             return base.Channel.RemoveMessageByTargetOrderAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveMessageByTargetOrderResponse> RemoveMessageByTargetOrderAsync(int targetId, int orderId)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveMessageByTargetOrderResponse> RemoveMessageByTargetOrderAsync(int targetId, int orderId)
         {
-            Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveMessageByTargetOrderRequest inValue = new Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveMessageByTargetOrderRequest();
+            Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveMessageByTargetOrderRequest inValue = new Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveMessageByTargetOrderRequest();
             inValue.targetId = targetId;
             inValue.orderId = orderId;
-            return ((Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).RemoveMessageByTargetOrderAsync(inValue);
+            return ((Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).RemoveMessageByTargetOrderAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveMessageByIDResponse> Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort.RemoveMessageByIDAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveMessageByIDRequest request)
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveMessageByIDResponse> Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort.RemoveMessageByIDAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveMessageByIDRequest request)
         {
             return base.Channel.RemoveMessageByIDAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveMessageByIDResponse> RemoveMessageByIDAsync(int messageId)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveMessageByIDResponse> RemoveMessageByIDAsync(int messageId)
         {
-            Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveMessageByIDRequest inValue = new Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveMessageByIDRequest();
+            Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveMessageByIDRequest inValue = new Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveMessageByIDRequest();
             inValue.messageId = messageId;
-            return ((Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).RemoveMessageByIDAsync(inValue);
+            return ((Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).RemoveMessageByIDAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateMessageResponse> Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort.AddUpdateMessageAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateMessageRequest request)
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateMessageResponse> Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort.AddUpdateMessageAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateMessageRequest request)
         {
             return base.Channel.AddUpdateMessageAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateMessageResponse> AddUpdateMessageAsync(string messageXml)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateMessageResponse> AddUpdateMessageAsync(string messageXml)
         {
-            Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateMessageRequest inValue = new Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateMessageRequest();
+            Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateMessageRequest inValue = new Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateMessageRequest();
             inValue.messageXml = messageXml;
-            return ((Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).AddUpdateMessageAsync(inValue);
+            return ((Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).AddUpdateMessageAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetImagesResponse> Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort.GetImagesAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetImagesRequest request)
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetImagesResponse> Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort.GetImagesAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetImagesRequest request)
         {
             return base.Channel.GetImagesAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetImagesResponse> GetImagesAsync()
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetImagesResponse> GetImagesAsync()
         {
-            Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetImagesRequest inValue = new Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetImagesRequest();
-            return ((Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).GetImagesAsync(inValue);
+            Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetImagesRequest inValue = new Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetImagesRequest();
+            return ((Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).GetImagesAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.DeleteImageResponse> Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort.DeleteImageAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.DeleteImageRequest request)
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.DeleteImageResponse> Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort.DeleteImageAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.DeleteImageRequest request)
         {
             return base.Channel.DeleteImageAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.DeleteImageResponse> DeleteImageAsync(string imageName)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.DeleteImageResponse> DeleteImageAsync(string imageName)
         {
-            Mtd.Kiosk.LEDUpdater.IpDisplaysApi.DeleteImageRequest inValue = new Mtd.Kiosk.LEDUpdater.IpDisplaysApi.DeleteImageRequest();
+            Mtd.Kiosk.LedUpdater.IpDisplaysApi.DeleteImageRequest inValue = new Mtd.Kiosk.LedUpdater.IpDisplaysApi.DeleteImageRequest();
             inValue.imageName = imageName;
-            return ((Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).DeleteImageAsync(inValue);
+            return ((Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).DeleteImageAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UploadImageResponse> Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort.UploadImageAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UploadImageRequest request)
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.UploadImageResponse> Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort.UploadImageAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.UploadImageRequest request)
         {
             return base.Channel.UploadImageAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UploadImageResponse> UploadImageAsync(string imageName, string base64Image)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.UploadImageResponse> UploadImageAsync(string imageName, string base64Image)
         {
-            Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UploadImageRequest inValue = new Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UploadImageRequest();
+            Mtd.Kiosk.LedUpdater.IpDisplaysApi.UploadImageRequest inValue = new Mtd.Kiosk.LedUpdater.IpDisplaysApi.UploadImageRequest();
             inValue.imageName = imageName;
             inValue.base64Image = base64Image;
-            return ((Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).UploadImageAsync(inValue);
+            return ((Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).UploadImageAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UpdateSignInfo2Response> Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort.UpdateSignInfo2Async(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UpdateSignInfo2Request request)
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.UpdateSignInfo2Response> Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort.UpdateSignInfo2Async(Mtd.Kiosk.LedUpdater.IpDisplaysApi.UpdateSignInfo2Request request)
         {
             return base.Channel.UpdateSignInfo2Async(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UpdateSignInfo2Response> UpdateSignInfo2Async(int infoId, string infoXml)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.UpdateSignInfo2Response> UpdateSignInfo2Async(int infoId, string infoXml)
         {
-            Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UpdateSignInfo2Request inValue = new Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UpdateSignInfo2Request();
+            Mtd.Kiosk.LedUpdater.IpDisplaysApi.UpdateSignInfo2Request inValue = new Mtd.Kiosk.LedUpdater.IpDisplaysApi.UpdateSignInfo2Request();
             inValue.infoId = infoId;
             inValue.infoXml = infoXml;
-            return ((Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).UpdateSignInfo2Async(inValue);
+            return ((Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).UpdateSignInfo2Async(inValue);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetSignInfo2Response> GetSignInfo2Async(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetSignInfo2Request request)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetSignInfo2Response> GetSignInfo2Async(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetSignInfo2Request request)
         {
             return base.Channel.GetSignInfo2Async(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetSignInfoResponse> GetSignInfoAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetSignInfoRequest request)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetSignInfoResponse> GetSignInfoAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetSignInfoRequest request)
         {
             return base.Channel.GetSignInfoAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetDateTimeResponse> GetDateTimeAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetDateTimeRequest request)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetDateTimeResponse> GetDateTimeAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetDateTimeRequest request)
         {
             return base.Channel.GetDateTimeAsync(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SetDateTimeResponse> Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort.SetDateTimeAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SetDateTimeRequest request)
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.SetDateTimeResponse> Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort.SetDateTimeAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.SetDateTimeRequest request)
         {
             return base.Channel.SetDateTimeAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SetDateTimeResponse> SetDateTimeAsync(System.DateTime dateTimeText)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.SetDateTimeResponse> SetDateTimeAsync(System.DateTime dateTimeText)
         {
-            Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SetDateTimeRequest inValue = new Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SetDateTimeRequest();
+            Mtd.Kiosk.LedUpdater.IpDisplaysApi.SetDateTimeRequest inValue = new Mtd.Kiosk.LedUpdater.IpDisplaysApi.SetDateTimeRequest();
             inValue.dateTimeText = dateTimeText;
-            return ((Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).SetDateTimeAsync(inValue);
+            return ((Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).SetDateTimeAsync(inValue);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetScreenSnapshotResponse> GetScreenSnapshotAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetScreenSnapshotRequest request)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetScreenSnapshotResponse> GetScreenSnapshotAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetScreenSnapshotRequest request)
         {
             return base.Channel.GetScreenSnapshotAsync(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SendCommandResponse> Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort.SendCommandAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SendCommandRequest request)
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.SendCommandResponse> Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort.SendCommandAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.SendCommandRequest request)
         {
             return base.Channel.SendCommandAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SendCommandResponse> SendCommandAsync(int commandID, string commandText)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.SendCommandResponse> SendCommandAsync(int commandID, string commandText)
         {
-            Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SendCommandRequest inValue = new Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SendCommandRequest();
+            Mtd.Kiosk.LedUpdater.IpDisplaysApi.SendCommandRequest inValue = new Mtd.Kiosk.LedUpdater.IpDisplaysApi.SendCommandRequest();
             inValue.commandID = commandID;
             inValue.commandText = commandText;
-            return ((Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).SendCommandAsync(inValue);
+            return ((Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).SendCommandAsync(inValue);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SendCommand2Response> SendCommand2Async(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SendCommand2Request request)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.SendCommand2Response> SendCommand2Async(Mtd.Kiosk.LedUpdater.IpDisplaysApi.SendCommand2Request request)
         {
             return base.Channel.SendCommand2Async(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetDataItemsResponse> GetDataItemsAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetDataItemsRequest request)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetDataItemsResponse> GetDataItemsAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetDataItemsRequest request)
         {
             return base.Channel.GetDataItemsAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetDataItemByNameResponse> GetDataItemByNameAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetDataItemByNameRequest request)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetDataItemByNameResponse> GetDataItemByNameAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetDataItemByNameRequest request)
         {
             return base.Channel.GetDataItemByNameAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetDataItemByIDResponse> GetDataItemByIDAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetDataItemByIDRequest request)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetDataItemByIDResponse> GetDataItemByIDAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetDataItemByIDRequest request)
         {
             return base.Channel.GetDataItemByIDAsync(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UpdateDataItemValuesResponse> Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort.UpdateDataItemValuesAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UpdateDataItemValuesRequest request)
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.UpdateDataItemValuesResponse> Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort.UpdateDataItemValuesAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.UpdateDataItemValuesRequest request)
         {
             return base.Channel.UpdateDataItemValuesAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UpdateDataItemValuesResponse> UpdateDataItemValuesAsync(string dataItemValuesXml)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.UpdateDataItemValuesResponse> UpdateDataItemValuesAsync(string dataItemValuesXml)
         {
-            Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UpdateDataItemValuesRequest inValue = new Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UpdateDataItemValuesRequest();
+            Mtd.Kiosk.LedUpdater.IpDisplaysApi.UpdateDataItemValuesRequest inValue = new Mtd.Kiosk.LedUpdater.IpDisplaysApi.UpdateDataItemValuesRequest();
             inValue.dataItemValuesXml = dataItemValuesXml;
-            return ((Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).UpdateDataItemValuesAsync(inValue);
+            return ((Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).UpdateDataItemValuesAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UpdateDataItemValueByNameResponse> Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort.UpdateDataItemValueByNameAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UpdateDataItemValueByNameRequest request)
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.UpdateDataItemValueByNameResponse> Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort.UpdateDataItemValueByNameAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.UpdateDataItemValueByNameRequest request)
         {
             return base.Channel.UpdateDataItemValueByNameAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UpdateDataItemValueByNameResponse> UpdateDataItemValueByNameAsync(string dataItemName, string dataItemValue)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.UpdateDataItemValueByNameResponse> UpdateDataItemValueByNameAsync(string dataItemName, string dataItemValue)
         {
-            Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UpdateDataItemValueByNameRequest inValue = new Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UpdateDataItemValueByNameRequest();
+            Mtd.Kiosk.LedUpdater.IpDisplaysApi.UpdateDataItemValueByNameRequest inValue = new Mtd.Kiosk.LedUpdater.IpDisplaysApi.UpdateDataItemValueByNameRequest();
             inValue.dataItemName = dataItemName;
             inValue.dataItemValue = dataItemValue;
-            return ((Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).UpdateDataItemValueByNameAsync(inValue);
+            return ((Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).UpdateDataItemValueByNameAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UpdateDataItemValueByIDResponse> Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort.UpdateDataItemValueByIDAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UpdateDataItemValueByIDRequest request)
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.UpdateDataItemValueByIDResponse> Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort.UpdateDataItemValueByIDAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.UpdateDataItemValueByIDRequest request)
         {
             return base.Channel.UpdateDataItemValueByIDAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UpdateDataItemValueByIDResponse> UpdateDataItemValueByIDAsync(int dataItemId, string dataItemValue)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.UpdateDataItemValueByIDResponse> UpdateDataItemValueByIDAsync(int dataItemId, string dataItemValue)
         {
-            Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UpdateDataItemValueByIDRequest inValue = new Mtd.Kiosk.LEDUpdater.IpDisplaysApi.UpdateDataItemValueByIDRequest();
+            Mtd.Kiosk.LedUpdater.IpDisplaysApi.UpdateDataItemValueByIDRequest inValue = new Mtd.Kiosk.LedUpdater.IpDisplaysApi.UpdateDataItemValueByIDRequest();
             inValue.dataItemId = dataItemId;
             inValue.dataItemValue = dataItemValue;
-            return ((Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).UpdateDataItemValueByIDAsync(inValue);
+            return ((Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).UpdateDataItemValueByIDAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveDataItemByNameResponse> Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort.RemoveDataItemByNameAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveDataItemByNameRequest request)
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveDataItemByNameResponse> Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort.RemoveDataItemByNameAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveDataItemByNameRequest request)
         {
             return base.Channel.RemoveDataItemByNameAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveDataItemByNameResponse> RemoveDataItemByNameAsync(string dataItemName)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveDataItemByNameResponse> RemoveDataItemByNameAsync(string dataItemName)
         {
-            Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveDataItemByNameRequest inValue = new Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveDataItemByNameRequest();
+            Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveDataItemByNameRequest inValue = new Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveDataItemByNameRequest();
             inValue.dataItemName = dataItemName;
-            return ((Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).RemoveDataItemByNameAsync(inValue);
+            return ((Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).RemoveDataItemByNameAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveDataItemByIDResponse> Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort.RemoveDataItemByIDAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveDataItemByIDRequest request)
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveDataItemByIDResponse> Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort.RemoveDataItemByIDAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveDataItemByIDRequest request)
         {
             return base.Channel.RemoveDataItemByIDAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveDataItemByIDResponse> RemoveDataItemByIDAsync(int dataItemId)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveDataItemByIDResponse> RemoveDataItemByIDAsync(int dataItemId)
         {
-            Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveDataItemByIDRequest inValue = new Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveDataItemByIDRequest();
+            Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveDataItemByIDRequest inValue = new Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveDataItemByIDRequest();
             inValue.dataItemId = dataItemId;
-            return ((Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).RemoveDataItemByIDAsync(inValue);
+            return ((Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).RemoveDataItemByIDAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateDataItemResponse> Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort.AddUpdateDataItemAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateDataItemRequest request)
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateDataItemResponse> Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort.AddUpdateDataItemAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateDataItemRequest request)
         {
             return base.Channel.AddUpdateDataItemAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateDataItemResponse> AddUpdateDataItemAsync(string dataItemXml)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateDataItemResponse> AddUpdateDataItemAsync(string dataItemXml)
         {
-            Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateDataItemRequest inValue = new Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateDataItemRequest();
+            Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateDataItemRequest inValue = new Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateDataItemRequest();
             inValue.dataItemXml = dataItemXml;
-            return ((Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).AddUpdateDataItemAsync(inValue);
+            return ((Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).AddUpdateDataItemAsync(inValue);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetZoneByNameResponse> GetZoneByNameAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetZoneByNameRequest request)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetZoneByNameResponse> GetZoneByNameAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetZoneByNameRequest request)
         {
             return base.Channel.GetZoneByNameAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetZoneByIDResponse> GetZoneByIDAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetZoneByIDRequest request)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetZoneByIDResponse> GetZoneByIDAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetZoneByIDRequest request)
         {
             return base.Channel.GetZoneByIDAsync(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveZoneByNameResponse> Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort.RemoveZoneByNameAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveZoneByNameRequest request)
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveZoneByNameResponse> Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort.RemoveZoneByNameAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveZoneByNameRequest request)
         {
             return base.Channel.RemoveZoneByNameAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveZoneByNameResponse> RemoveZoneByNameAsync(string layoutName, string zoneName)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveZoneByNameResponse> RemoveZoneByNameAsync(string layoutName, string zoneName)
         {
-            Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveZoneByNameRequest inValue = new Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveZoneByNameRequest();
+            Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveZoneByNameRequest inValue = new Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveZoneByNameRequest();
             inValue.layoutName = layoutName;
             inValue.zoneName = zoneName;
-            return ((Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).RemoveZoneByNameAsync(inValue);
+            return ((Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).RemoveZoneByNameAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveZoneByIDResponse> Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort.RemoveZoneByIDAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveZoneByIDRequest request)
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveZoneByIDResponse> Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort.RemoveZoneByIDAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveZoneByIDRequest request)
         {
             return base.Channel.RemoveZoneByIDAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveZoneByIDResponse> RemoveZoneByIDAsync(int zoneId)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveZoneByIDResponse> RemoveZoneByIDAsync(int zoneId)
         {
-            Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveZoneByIDRequest inValue = new Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveZoneByIDRequest();
+            Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveZoneByIDRequest inValue = new Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveZoneByIDRequest();
             inValue.zoneId = zoneId;
-            return ((Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).RemoveZoneByIDAsync(inValue);
+            return ((Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).RemoveZoneByIDAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateZoneResponse> Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort.AddUpdateZoneAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateZoneRequest request)
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateZoneResponse> Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort.AddUpdateZoneAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateZoneRequest request)
         {
             return base.Channel.AddUpdateZoneAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateZoneResponse> AddUpdateZoneAsync(string zoneXml)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateZoneResponse> AddUpdateZoneAsync(string zoneXml)
         {
-            Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateZoneRequest inValue = new Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateZoneRequest();
+            Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateZoneRequest inValue = new Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateZoneRequest();
             inValue.zoneXml = zoneXml;
-            return ((Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).AddUpdateZoneAsync(inValue);
+            return ((Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).AddUpdateZoneAsync(inValue);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetLayoutParentIDResponse> GetLayoutParentIDAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetLayoutParentIDRequest request)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetLayoutParentIDResponse> GetLayoutParentIDAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetLayoutParentIDRequest request)
         {
             return base.Channel.GetLayoutParentIDAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetLayoutByNameResponse> GetLayoutByNameAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetLayoutByNameRequest request)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetLayoutByNameResponse> GetLayoutByNameAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetLayoutByNameRequest request)
         {
             return base.Channel.GetLayoutByNameAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetLayoutByIdResponse> GetLayoutByIdAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetLayoutByIdRequest request)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetLayoutByIdResponse> GetLayoutByIdAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetLayoutByIdRequest request)
         {
             return base.Channel.GetLayoutByIdAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetLayoutsResponse> GetLayoutsAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.GetLayoutsRequest request)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetLayoutsResponse> GetLayoutsAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.GetLayoutsRequest request)
         {
             return base.Channel.GetLayoutsAsync(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveLayoutByNameResponse> Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort.RemoveLayoutByNameAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveLayoutByNameRequest request)
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveLayoutByNameResponse> Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort.RemoveLayoutByNameAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveLayoutByNameRequest request)
         {
             return base.Channel.RemoveLayoutByNameAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveLayoutByNameResponse> RemoveLayoutByNameAsync(string layoutName)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveLayoutByNameResponse> RemoveLayoutByNameAsync(string layoutName)
         {
-            Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveLayoutByNameRequest inValue = new Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveLayoutByNameRequest();
+            Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveLayoutByNameRequest inValue = new Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveLayoutByNameRequest();
             inValue.layoutName = layoutName;
-            return ((Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).RemoveLayoutByNameAsync(inValue);
+            return ((Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).RemoveLayoutByNameAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveLayoutByIdResponse> Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort.RemoveLayoutByIdAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveLayoutByIdRequest request)
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveLayoutByIdResponse> Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort.RemoveLayoutByIdAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveLayoutByIdRequest request)
         {
             return base.Channel.RemoveLayoutByIdAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveLayoutByIdResponse> RemoveLayoutByIdAsync(int layoutId)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveLayoutByIdResponse> RemoveLayoutByIdAsync(int layoutId)
         {
-            Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveLayoutByIdRequest inValue = new Mtd.Kiosk.LEDUpdater.IpDisplaysApi.RemoveLayoutByIdRequest();
+            Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveLayoutByIdRequest inValue = new Mtd.Kiosk.LedUpdater.IpDisplaysApi.RemoveLayoutByIdRequest();
             inValue.layoutId = layoutId;
-            return ((Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).RemoveLayoutByIdAsync(inValue);
+            return ((Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).RemoveLayoutByIdAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateLayoutResponse> Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort.AddUpdateLayoutAsync(Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateLayoutRequest request)
+        System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateLayoutResponse> Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort.AddUpdateLayoutAsync(Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateLayoutRequest request)
         {
             return base.Channel.AddUpdateLayoutAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateLayoutResponse> AddUpdateLayoutAsync(string layoutXml)
+        public System.Threading.Tasks.Task<Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateLayoutResponse> AddUpdateLayoutAsync(string layoutXml)
         {
-            Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateLayoutRequest inValue = new Mtd.Kiosk.LEDUpdater.IpDisplaysApi.AddUpdateLayoutRequest();
+            Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateLayoutRequest inValue = new Mtd.Kiosk.LedUpdater.IpDisplaysApi.AddUpdateLayoutRequest();
             inValue.layoutXml = layoutXml;
-            return ((Mtd.Kiosk.LEDUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).AddUpdateLayoutAsync(inValue);
+            return ((Mtd.Kiosk.LedUpdater.IpDisplaysApi.SignSvrSoapPort)(this)).AddUpdateLayoutAsync(inValue);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()

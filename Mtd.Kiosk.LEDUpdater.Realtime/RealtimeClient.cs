@@ -2,9 +2,9 @@ using System.Collections.Immutable;
 using System.Text.Json;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Mtd.Kiosk.LEDUpdater.Realtime.Entitites;
+using Mtd.Kiosk.LedUpdater.Realtime.Entitites;
 
-namespace Mtd.Kiosk.LEDUpdater.Realtime;
+namespace Mtd.Kiosk.LedUpdater.Realtime;
 
 public class RealtimeClient
 {
@@ -114,6 +114,7 @@ public class RealtimeClient
 			}
 
 			var deserialized = await JsonSerializer.DeserializeAsync<IEnumerable<Departure>>(responseStream, cancellationToken: cancellationToken);
+			_logger.LogDebug("Deserialized {count} departures for stop {stopId}.", deserialized?.Count(), stopId);
 			return (deserialized ?? []).ToImmutableArray();
 		}
 		catch (Exception ex)

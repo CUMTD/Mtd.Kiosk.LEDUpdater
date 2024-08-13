@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Mtd.Kiosk.LEDUpdater.Realtime;
+namespace Mtd.Kiosk.LedUpdater.Realtime;
 
 public class RealtimeClientConfig
 {

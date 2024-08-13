@@ -1,13 +1,13 @@
 using Microsoft.Extensions.Logging;
-using Mtd.Kiosk.LEDUpdater.Realtime.Entitites;
+using Mtd.Kiosk.LedUpdater.Realtime.Entitites;
 
-namespace Mtd.Kiosk.LEDUpdater.IpDisplaysApi;
+namespace Mtd.Kiosk.LedUpdater.IpDisplaysApi;
 public class LedSign
 {
 	private readonly IPDisplaysApiClient _client;
-	private readonly ILogger<LedSign> _logger;
+	private readonly ILogger _logger;
 
-	public LedSign(IPDisplaysApiClient client, ILogger<LedSign> logger)
+	public LedSign(IPDisplaysApiClient client, ILogger logger)
 	{
 		ArgumentNullException.ThrowIfNull(client);
 		ArgumentNullException.ThrowIfNull(logger);
@@ -37,6 +37,8 @@ public class LedSign
 
 		var result = await _client.EnsureLayoutEnabled("TwoLineDepartures");
 
+		_logger.LogInformation("Sign updated with TwoLineDepartures: {TopDeparture} and {BottomDeparture}", topDeparture, bottomDeparture);
+
 		return result;
 	}
 
@@ -54,6 +56,8 @@ public class LedSign
 		await _client.UpdateDataItems(dataItems);
 
 		var result = await _client.EnsureLayoutEnabled("OneLineMessage");
+
+		_logger.LogInformation("Sign updated with OneLineMessage: {TopMessage} and departure: {BottomDeparture}", topMessage, bottomDeparture);
 
 		return result;
 	}
@@ -73,12 +77,16 @@ public class LedSign
 
 		var result = await _client.EnsureLayoutEnabled("TwoLineMessage");
 
+		_logger.LogInformation("Sign updated with TwoLineMessage: {TopMessage} and {BottomMessage}", topMessage, bottomMessage);
+
 		return result;
 	}
 
 	public async Task<bool> BlankScreen()
 	{
 		var result = await UpdateSign(string.Empty, string.Empty);
+
+		_logger.LogInformation("Sign blanked.");
 
 		return result;
 	}

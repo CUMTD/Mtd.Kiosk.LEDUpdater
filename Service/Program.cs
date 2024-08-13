@@ -1,11 +1,11 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Mtd.Kiosk.LEDUpdater.IpDisplaysApi;
-using Mtd.Kiosk.LEDUpdater.Realtime;
-using Mtd.Kiosk.LEDUpdater.SanityApi;
-using Mtd.Kiosk.LEDUpdater.Service;
-using Mtd.Kiosk.LEDUpdater.Service.Extensions;
+using Mtd.Kiosk.LedUpdater.IpDisplaysApi;
+using Mtd.Kiosk.LedUpdater.Realtime;
+using Mtd.Kiosk.LedUpdater.SanityClient;
+using Mtd.Kiosk.LedUpdater.Service;
+using Mtd.Kiosk.LedUpdater.Service.Extensions;
 using Serilog;
 
 try
@@ -15,14 +15,15 @@ try
 		.CreateDefaultBuilder(args)
 		.UseDefaultServiceProvider((context, options) =>
 		{
-			options.ValidateOnBuild = false;
+			options.ValidateOnBuild = true;
 		})
 		.ConfigureServices((context, services) =>
 		{
+
 			_ = services
-				.Configure<IPDisplaysApiClientConfig>(context.Configuration.GetSection(IPDisplaysApiClientConfig.ConfigSectionName))
-				.AddOptionsWithValidateOnStart<IPDisplaysApiClientConfig>(IPDisplaysApiClientConfig.ConfigSectionName)
-				.Bind(context.Configuration.GetSection(IPDisplaysApiClientConfig.ConfigSectionName));
+				.Configure<IpDisplaysApiClientConfig>(context.Configuration.GetSection(IpDisplaysApiClientConfig.ConfigSectionName))
+				.AddOptionsWithValidateOnStart<IpDisplaysApiClientConfig>(IpDisplaysApiClientConfig.ConfigSectionName)
+				.Bind(context.Configuration.GetSection(IpDisplaysApiClientConfig.ConfigSectionName));
 
 			_ = services
 				.Configure<SanityClientConfig>(context.Configuration.GetSection(SanityClientConfig.ConfigSectionName))
@@ -34,9 +35,14 @@ try
 				.AddOptionsWithValidateOnStart<RealtimeClientConfig>(RealtimeClientConfig.ConfigSectionName)
 				.Bind(context.Configuration.GetSection(RealtimeClientConfig.ConfigSectionName));
 
-			_ = services.AddScoped<IPDisplaysApiClientFactory>();
+			_ = services.Configure<LedUpdaterServiceConfig>(context.Configuration.GetSection(LedUpdaterServiceConfig.ConfigSectionName))
+				.AddOptionsWithValidateOnStart<LedUpdaterServiceConfig>(LedUpdaterServiceConfig.ConfigSectionName)
+				.Bind(context.Configuration.GetSection(LedUpdaterServiceConfig.ConfigSectionName));
+
+			_ = services.AddScoped<IpDisplaysApiClientFactory>();
 			_ = services.AddScoped<SanityClient>();
 			_ = services.AddScoped<RealtimeClient>();
+			_ = services.AddScoped<LedUpdaterService>();
 
 			_ = services
 				.Configure<HostOptions>(hostOptions =>

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Mtd.Kiosk.LEDUpdater.SanityApi;
+namespace Mtd.Kiosk.LedUpdater.SanityClient;
 
 public class SanityClientConfig
 {
@@ -9,15 +9,15 @@ public class SanityClientConfig
 	[Required]
 	public required string ProjectId { get; set; }
 
-    [Required]
-    public required string Dataset { get; set; }
+	[Required]
+	public required string Dataset { get; set; }
 
-    [Required]
-    public required string Token { get; set; }
+	[Required]
+	public required string Token { get; set; }
 
-    [Required]
-    public required bool UseCdn { get; set; }
+	[Required]
+	public required bool UseCdn { get; set; }
 
-    [Required]
-    public required string ApiVersion { get; set; }
+	[Required]
+	public required string ApiVersion { get; set; }
 }

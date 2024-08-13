@@ -3,9 +3,9 @@ using System.Text.Json;
 using System.Web;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Mtd.Kiosk.LEDUpdater.SanityApi.Schema;
+using Mtd.Kiosk.LedUpdater.SanityClient.Schema;
 
-namespace Mtd.Kiosk.LEDUpdater.SanityApi;
+namespace Mtd.Kiosk.LedUpdater.SanityClient;
 
 public class SanityClient
 {

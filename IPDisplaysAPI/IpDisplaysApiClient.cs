@@ -3,12 +3,11 @@ using System.Xml;
 using System.Xml.Serialization;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Mtd.Kiosk.LEDUpdater.IpDisplaysApi.Models;
+using Mtd.Kiosk.LedUpdater.IpDisplaysApi.Models;
 
-namespace Mtd.Kiosk.LEDUpdater.IpDisplaysApi;
+namespace Mtd.Kiosk.LedUpdater.IpDisplaysApi;
 
 // TODO: Use NuGet package instead of adding service reference
-// TODO: Log everything
 
 public class IPDisplaysApiClient
 {
@@ -23,7 +22,7 @@ public class IPDisplaysApiClient
 
 	#region Constructors
 
-	internal IPDisplaysApiClient(string ip, IOptions<IPDisplaysApiClientConfig> config, ILogger<IPDisplaysApiClient> logger)
+	internal IPDisplaysApiClient(string ip, IOptions<IpDisplaysApiClientConfig> config, ILogger<IPDisplaysApiClient> logger)
 	{
 		ArgumentException.ThrowIfNullOrWhiteSpace(ip);
 		ArgumentNullException.ThrowIfNull(config, nameof(config));
@@ -71,12 +70,85 @@ public class IPDisplaysApiClient
 
 		var serializer = new XmlSerializer(typeof(UpdateDataItemValuesXml));
 
-		using var textWriter = new StringWriter();
-		serializer.Serialize(textWriter, XMLdataItems);
+		try
+		{
+			using var textWriter = new StringWriter();
+			serializer.Serialize(textWriter, XMLdataItems);
+			var xml = textWriter.ToString();
+			_logger.LogTrace("Serialized {xml} data items for sign.", xml);
+			return xml;
+		}
+		catch (Exception ex)
+		{
+			_logger.LogError(ex, "Failed to serialize data items for sign update.");
+			throw;
+		}
+	}
 
-		var xml = textWriter.ToString();
-		_logger.LogTrace("Serialized {xml} data items for sign.", xml);
-		return xml;
+	/// <summary>
+	/// Deserializes a GetLayoutByNameResponse into a GetLayoutByNameResponseXml object.
+	/// </summary>
+	/// <param name="response"></param>
+	/// <returns></returns>
+	private GetLayoutByNameResponseXml? DeserializeGetLayoutByNameResponse(GetLayoutByNameResponse response)
+	{
+		var serializer = new XmlSerializer(typeof(GetLayoutByNameResponseXml));
+
+		try
+		{
+			using var reader = new StringReader(response.layoutInfoXml);
+
+			if (serializer.Deserialize(reader) is GetLayoutByNameResponseXml layout)
+			{
+				return layout;
+			}
+
+		}
+		catch (Exception ex)
+		{
+			_logger.LogError(ex, "Failed to deserialize GetLayoutByName response xml.");
+		}
+
+		return null;
+
+	}
+
+	/// <summary>
+	/// Enables a single layout and disables all other layouts.
+	/// </summary>
+	/// <param name="client"></param>
+	/// <param name="layoutToEnable">The name of the layout to enable.</param>
+	/// <returns></returns>
+	private async Task<bool> SetSingleLayoutAsync(SignSvrSoapPortClient client, string layoutToEnable)
+	{
+		// get all layouts on the sign
+		var layouts = await client.GetLayoutsAsync(new GetLayoutsRequest(0));
+
+		// deserialize into a GetLayoutsAsyncResponseXml object
+		var serializer = new XmlSerializer(typeof(GetLayoutsAsyncResponseXml));
+		using var reader = new StringReader(layouts.layoutInfoXml);
+		if (serializer.Deserialize(reader) is not GetLayoutsAsyncResponseXml response)
+		{
+			_logger.LogError("Failed to deserialize GetLayoutsAsync response.");
+			return false;
+		}
+
+		// disable all enabled layouts and enable the target layout
+		foreach (var layout in response.Layout)
+		{
+			if (layout.Enabled == "1")
+			{
+				_ = await client.SetLayoutStateAsync(layout.Name, 0);
+				_logger.LogTrace("Disabled {layoutName} layout on sign.", layout.Name);
+			}
+		}
+
+		// enable the target layout
+
+		var result = await client.SetLayoutStateAsync(layoutToEnable, 1);
+		_logger.LogTrace("Enabled {layoutToEnable} layout on sign.", layoutToEnable);
+
+		return true;
 	}
 
 	#endregion Helpers
@@ -91,11 +163,23 @@ public class IPDisplaysApiClient
 	{
 		using var client = GetSoapClient();
 
+		// must be done in this order
 		var stop = await client.SendCommandAsync(STOP_TIMER, "Time_Since_Last_Update");
 		var set = await client.UpdateDataItemValueByNameAsync("Time_Since_Last_Update", DateTime.Now.ToString("M/d HH:mm:ss"));
 		var start = await client.SendCommandAsync(START_TIMER, "Time_Since_Last_Update");
 
-		return stop.Result == 0 && set.Result == 0 && start.Result == 0;
+		var success = stop.Result == 1 && set.Result == 1 && start.Result == 1;
+
+		if (success)
+		{
+			_logger.LogTrace("Refreshed Timer on Sign");
+		}
+		else
+		{
+			_logger.LogError("Failed to Refresh Timer on Sign");
+		}
+
+		return success;
 	}
 
 	/// <summary>
@@ -106,23 +190,22 @@ public class IPDisplaysApiClient
 	public async Task<bool> EnsureLayoutEnabled(string layoutName)
 	{
 		using var client = GetSoapClient();
-		try
+
+		var layout = await client.GetLayoutByNameAsync(new GetLayoutByNameRequest(layoutName, 0));
+
+		if (layout.layoutInfoXml.Contains("enabled=\"1\""))
 		{
-			var layout = await client.GetLayoutByNameAsync(new GetLayoutByNameRequest(layoutName, 0));
-
-			if (layout.layoutInfoXml.Contains("enabled=\"1\""))
-			{
-				return true;
-			}
-
-			var result = await client.SetLayoutStateAsync(layoutName, 1);
+			// layout is already enabled, no need to do anything
+			_logger.LogTrace("{layoutName} is already enabled.", layoutName);
 			return true;
 		}
-		catch (Exception ex)
+		else
 		{
-			_logger.LogError(ex, "{name} Failed to Execute", nameof(EnsureLayoutEnabled));
+			var result = await SetSingleLayoutAsync(client, layoutName);
 		}
-		return false;
+
+		return true;
+
 	}
 
 	/// <summary>
@@ -137,6 +220,7 @@ public class IPDisplaysApiClient
 		try
 		{
 			_ = await client.UpdateDataItemValueByNameAsync(name, value);
+			_logger.LogTrace("Updated {name} to {value}", name, value);
 			return true;
 		}
 		catch (Exception ex)
@@ -147,7 +231,7 @@ public class IPDisplaysApiClient
 	}
 
 	/// <summary>
-	/// Updates multiple data items at once.
+	/// Updates multiple data items on the sign at once.
 	/// </summary>
 	/// <param name="dataItems">A dictionary of dataItem names mapped to their new values.</param>
 	/// <returns></returns>
