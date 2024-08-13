@@ -1,83 +1,78 @@
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Mtd.Kiosk.LEDUpdater.IpDisplaysApi;
-using Mtd.Kiosk.LEDUpdater.Realtime;
-using Mtd.Kiosk.LEDUpdater.Realtime.Entitites;
-using Mtd.Kiosk.LEDUpdater.SanityApi;
-using Mtd.Kiosk.LEDUpdater.SanityApi.Schema;
+using Microsoft.Extensions.Options;
+using Mtd.Kiosk.LedUpdater.IpDisplaysApi;
+using Mtd.Kiosk.LedUpdater.Realtime;
+using Mtd.Kiosk.LedUpdater.Realtime.Entitites;
+using Mtd.Kiosk.LedUpdater.SanityClient.Schema;
 
 
-namespace Mtd.Kiosk.LEDUpdater.Service;
+namespace Mtd.Kiosk.LedUpdater.Service;
 internal class LedUpdaterService : BackgroundService, IDisposable
 {
+	private readonly LedUpdaterServiceConfig _config;
 	private readonly RealtimeClient _realtimeClient;
-	private readonly IPDisplaysApiClientFactory _ipDisplaysAPIClientFactory;
-	private readonly SanityClient _sanityApiClient;
-	private readonly ILogger<LedUpdaterService> _logger;
+	private readonly IpDisplaysApiClientFactory _ipDisplaysAPIClientFactory;
+	private readonly SanityClient.SanityClient _sanityApiClient;
 	private readonly Dictionary<string, LedSign> _signs;
+	private readonly ILogger<LedUpdaterService> _logger;
 
-	public LedUpdaterService(RealtimeClient realtimeClient, IPDisplaysApiClientFactory clientFactory, SanityClient sanityApiClient, ILogger<LedUpdaterService> logger)
+	public LedUpdaterService(IOptions<LedUpdaterServiceConfig> config, RealtimeClient realtimeClient, IpDisplaysApiClientFactory ipDisplaysClientFactory, SanityClient.SanityClient sanityApiClient, ILogger<LedUpdaterService> logger)
 	{
+		ArgumentNullException.ThrowIfNull(config?.Value, nameof(config));
 		ArgumentNullException.ThrowIfNull(realtimeClient, nameof(realtimeClient));
-		ArgumentNullException.ThrowIfNull(clientFactory, nameof(clientFactory));
+		ArgumentNullException.ThrowIfNull(ipDisplaysClientFactory, nameof(ipDisplaysClientFactory));
 		ArgumentNullException.ThrowIfNull(sanityApiClient, nameof(sanityApiClient));
 		ArgumentNullException.ThrowIfNull(logger, nameof(logger));
 
+		_config = config.Value;
 		_realtimeClient = realtimeClient;
-		_ipDisplaysAPIClientFactory = clientFactory;
+		_ipDisplaysAPIClientFactory = ipDisplaysClientFactory;
 		_sanityApiClient = sanityApiClient;
-		_logger = logger;
 		_signs = [];
+		_logger = logger;
 	}
 
 	protected async override Task ExecuteAsync(CancellationToken stoppingToken)
 	{
 		_logger.LogInformation("LED Updater Service started.");
+
 		// fetch kiosks with LED signs from Sanity
-		var kiosks = await GetKiosksAsync(stoppingToken);
+		var kiosks = await GetKiosksAsync(stoppingToken); // will not return null
 		var kioskDictionary = kiosks.ToDictionary(k => k.Id, k => k);
-		_logger.LogInformation("Fetched {count} kiosks with LED signs from Sanity.", kiosks.Count);
 
 		// each kiosk will be mapped to a stack of departures
-		Dictionary<string, Stack<Departure>> departuresDictionary = [];
+		var departuresDictionary = kiosks.ToDictionary(k => k.Id, _ => new Stack<Departure>());
 
 		// create a sign client for each IP address
 		foreach (var kiosk in kiosks)
 		{
-			_signs.Add(kiosk.Id, new LedSign(_ipDisplaysAPIClientFactory.CreateClient(kiosk.LedIp)));
-			departuresDictionary.Add(kiosk.Id, new Stack<Departure>());
+			_signs.Add(kiosk.Id, new LedSign(_ipDisplaysAPIClientFactory.CreateClient(kiosk.LedIp), _logger));
+			//_signs.Add(kiosk.Id, _ledSignFactory.CreateLedSign(kiosk.LedIp));
 
 			// fill this kiosk's departures stack
 			var departures = await FetchDepartures(kiosk.StopId, stoppingToken);
 			if (departures == null) // fetch fails
 			{
-				_logger.LogError("Failed to fetch departures for {kioskName} ({kioskId}).", kiosk.DisplayName, kiosk.Id);
 				await _signs[kiosk.Id].BlankScreen();
-				continue;
 			}
-			departuresDictionary[kiosk.Id] = new Stack<Departure>(departures);
-			_logger.LogDebug("Updated {kioskName} ({kioskId}) with {count} departures.", kiosk.DisplayName, kiosk.Id, departures.Count);
-
+			else
+			{
+				departuresDictionary[kiosk.Id] = new Stack<Departure>(departures);
+				_logger.LogDebug("Updated stack for {kioskName} ({kioskId}) with {count} departures.", kiosk.DisplayName, kiosk.Id, departures.Count);
+			}
 		}
 
 		// main loop
 		while (!stoppingToken.IsCancellationRequested)
 		{
 			var activeMessages = await FetchGeneralMessages(stoppingToken);
-			if (activeMessages == null)
-			{
-				_logger.LogError("Failed to fetch general messages.");
-				activeMessages = [];
-			}
 
 			// send updates to each sign
 			foreach (var kioskIdKey in departuresDictionary.Keys)
 			{
 				var currentKiosk = kioskDictionary[kioskIdKey];
 				var departuresStack = departuresDictionary[kioskIdKey];
-
-				Departure topDeparture;
-				Departure bottomDeparture;
 
 				// refill the stack if empty
 				if (departuresStack.Count == 0)
@@ -87,7 +82,6 @@ internal class LedUpdaterService : BackgroundService, IDisposable
 
 					if (departures == null) // fetch fails, blank the screen
 					{
-						_logger.LogError("Failed to fetch departures for {kioskName} ({kioskId}).", currentKiosk.DisplayName, currentKiosk.Id);
 						await _signs[kioskIdKey].BlankScreen();
 						continue;
 					}
@@ -96,52 +90,45 @@ internal class LedUpdaterService : BackgroundService, IDisposable
 					{
 						departuresStack.Push(departure);
 					}
-
 				}
 
 				// normal operation
-				var kioskActiveMessages = activeMessages.Where(m => m.StopId == currentKiosk.StopId);
-				if (kioskActiveMessages.Any()) // check for active messages for this kiosk
+
+				var activeKioskMessage = activeMessages.Where(m => m.StopId == currentKiosk.StopId).OrderByDescending(m => m.BlockRealtime).FirstOrDefault();
+				if (activeKioskMessage != default) // check for active messages for this kiosk
 				{
-					if (kioskActiveMessages.Any(m => m.BlockRealtime) || departuresStack.Count == 0) // the message blocks realtime
+					if (activeKioskMessage.BlockRealtime || departuresStack.Count == 0) // the message blocks realtime OR there are no departures so we need fullscreen
 					{
-						_logger.LogTrace("Showing fullscreen message for {kioskName} ({kioskId}).", currentKiosk.DisplayName, currentKiosk.Id);
-						var message = activeMessages.First(m => m.StopId == currentKiosk.StopId);
-						await _signs[kioskIdKey].UpdateTwoLineMessage(message.Message, "");
+						await _signs[kioskIdKey].UpdateSign(activeKioskMessage.Message, string.Empty);
 					}
 					else
 					{
 						// the message occupies one line
-						_logger.LogTrace("Showing one-line message for {kioskName} ({kioskId}).", currentKiosk.DisplayName, currentKiosk.Id);
-						bottomDeparture = departuresStack.Pop();
-						var message = activeMessages.First(m => m.StopId == currentKiosk.StopId);
-						await _signs[kioskIdKey].UpdateOneLineMessage(message.Message, bottomDeparture);
+						var departure = departuresStack.Pop();
+						await _signs[kioskIdKey].UpdateSign(activeKioskMessage.Message, departure);
 					}
 				}
-				else
-				{ // no active messages
-					if (departuresStack.Count == 0) // refill stack if empty
+				else // no active messages
+				{
+					if (departuresStack.Count == 0)
 					{
-						_logger.LogWarning("No departures found for {kioskName} ({kioskId}).", currentKiosk.DisplayName, currentKiosk.Id);
-						await _signs[kioskIdKey].UpdateTwoLineMessage("No departures at this time.", "");
-						continue;
+						await _signs[kioskIdKey].UpdateSign("No departures at this time.", string.Empty);
 					}
 					else if (departuresStack.Count == 1) // only one departure left
 					{
-						_logger.LogTrace("Showing one departure for {kioskName} ({kioskId}).", currentKiosk.DisplayName, currentKiosk.Id);
-						topDeparture = departuresStack.Pop();
-						await _signs[kioskIdKey].UpdateTwoLineDepartures(topDeparture, null);
-						continue;
+						var departure = departuresStack.Pop();
+						await _signs[kioskIdKey].UpdateSign(departure);
 					}
-					// regular two line operation
-					_logger.LogTrace("Showing departures for {kioskName} ({kioskId}).", currentKiosk.DisplayName, currentKiosk.Id);
-					bottomDeparture = departuresStack.Pop();
-					topDeparture = departuresStack.Pop();
-					await _signs[kioskIdKey].UpdateTwoLineDepartures(topDeparture, bottomDeparture);
+					else
+					{
+						// regular two line operation
+						var topDeparture = departuresStack.Pop();
+						var bottomDeparture = departuresStack.Pop();
+						await _signs[kioskIdKey].UpdateSign(topDeparture, bottomDeparture);
+					}
 				}
 			}
-			// TODO: Add ServiceConfigObject with configurable update interval
-			await Task.Delay(6_000, stoppingToken);
+			await Task.Delay(_config.SignUpdateInterval, stoppingToken);
 		}
 	}
 
@@ -150,8 +137,8 @@ internal class LedUpdaterService : BackgroundService, IDisposable
 		try
 		{
 			var departures = await _realtimeClient.GetDeparturesForStopIdAsync(stopId, cancellationToken);
-			_logger.LogDebug("Fetched {count} departures for {stopId}", departures.Count, stopId);
-			return departures;
+
+			return departures.Reverse().ToArray();
 		}
 		catch (Exception ex)
 		{
@@ -162,7 +149,7 @@ internal class LedUpdaterService : BackgroundService, IDisposable
 
 	}
 
-	private async Task<IReadOnlyCollection<GeneralMessage>?> FetchGeneralMessages(CancellationToken cancellationToken)
+	private async Task<IReadOnlyCollection<GeneralMessage>> FetchGeneralMessages(CancellationToken cancellationToken)
 	{
 		try
 		{
@@ -174,7 +161,7 @@ internal class LedUpdaterService : BackgroundService, IDisposable
 		{
 			_logger.LogError(ex, "Failed to fetch general messages.");
 		}
-		return null;
+		return [];
 	}
 
 	private async Task<IReadOnlyCollection<KioskDocument>> GetKiosksAsync(CancellationToken cancellationToken)
@@ -197,6 +184,7 @@ internal class LedUpdaterService : BackgroundService, IDisposable
 			throw new Exception("Sanity API completed successfully, but returned no kiosks.");
 		}
 
+		_logger.LogInformation("Fetched {count} kiosks with LED signs from Sanity.", kiosks.Count);
 		return kiosks;
 	}
 

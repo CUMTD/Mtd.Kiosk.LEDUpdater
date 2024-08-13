@@ -3,11 +3,9 @@ using System.Text.Json;
 using System.Web;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Mtd.Kiosk.LEDUpdater.SanityApi.Schema;
+using Mtd.Kiosk.LedUpdater.SanityClient.Schema;
 
-namespace Mtd.Kiosk.LEDUpdater.SanityApi;
-
-// https://tuo0zvfd.api.sanity.io/v2024-03-21/data/query/production?query=*%5B+_type+%3D%3D+%22kiosk%22+%26%26+ledIp+%21%3D+null+%26%26+length%28ledIp%29+%3E%3D+7+%5D%7B%0A++_id%2C+stopId%2C+displayName%2C+ledIp%0A%7D
+namespace Mtd.Kiosk.LedUpdater.SanityClient;
 
 public class SanityClient
 {
@@ -17,11 +15,11 @@ public class SanityClient
 
 	#region Constructors
 
-	public SanityClient(HttpClient client, ILogger<SanityClient> logger, IOptions<SanityClientConfig> config)
+	public SanityClient(HttpClient client, IOptions<SanityClientConfig> config, ILogger<SanityClient> logger)
 	{
 		ArgumentNullException.ThrowIfNull(client, nameof(client));
-		ArgumentNullException.ThrowIfNull(logger, nameof(logger));
 		ArgumentNullException.ThrowIfNull(config?.Value, nameof(config));
+		ArgumentNullException.ThrowIfNull(logger, nameof(logger));
 
 		_client = client;
 		_config = config.Value;
@@ -29,6 +27,7 @@ public class SanityClient
 	}
 
 	#endregion Constructors
+
 	#region Methods
 
 	private string GetQueryEndpointAddress() => $"https://{_config.ProjectId}.api.sanity.io/{_config.ApiVersion}/data/query/{_config.Dataset}?query=";
@@ -45,18 +44,18 @@ public class SanityClient
 			responseMessage = await _client.GetAsync(url, cancellationToken);
 			responseMessage.EnsureSuccessStatusCode();
 		}
+		catch (HttpRequestException ex)
+		{
+			_logger.LogError(ex, "Sanity returned at {code} status code: {message}.", responseMessage?.StatusCode, responseMessage?.ReasonPhrase);
+			throw;
+		}
 		catch (Exception ex)
 		{
 			_logger.LogError(ex, "Failed to fetch from Sanity.");
-		}
-
-		if (responseMessage == null)
-		{
-			throw new Exception("Response message was null.");
+			throw;
 		}
 
 		SanityApiResponse<KioskDocument> sanityResponse;
-
 		try
 		{
 			using var responseStream = await responseMessage!.Content.ReadAsStreamAsync(cancellationToken) ?? throw new Exception("Failed to read sanity response stream.");

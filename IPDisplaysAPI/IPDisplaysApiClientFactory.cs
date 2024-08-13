@@ -1,14 +1,14 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace Mtd.Kiosk.LEDUpdater.IpDisplaysApi;
+namespace Mtd.Kiosk.LedUpdater.IpDisplaysApi;
 
-public class IPDisplaysApiClientFactory
+public class IpDisplaysApiClientFactory
 {
-	private readonly IOptions<IPDisplaysApiClientConfig> _config;
+	private readonly IOptions<IpDisplaysApiClientConfig> _config;
 	private readonly ILogger<IPDisplaysApiClient> _logger;
 
-	public IPDisplaysApiClientFactory(IOptions<IPDisplaysApiClientConfig> config, ILogger<IPDisplaysApiClient> logger)
+	public IpDisplaysApiClientFactory(IOptions<IpDisplaysApiClientConfig> config, ILogger<IPDisplaysApiClient> logger)
 	{
 		ArgumentNullException.ThrowIfNull(config?.Value);
 		ArgumentNullException.ThrowIfNull(logger);

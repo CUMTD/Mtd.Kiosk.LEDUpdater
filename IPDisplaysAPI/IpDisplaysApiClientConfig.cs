@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Mtd.Kiosk.LEDUpdater.IpDisplaysApi;
-public class IPDisplaysApiClientConfig
+namespace Mtd.Kiosk.LedUpdater.IpDisplaysApi;
+public class IpDisplaysApiClientConfig
 {
 	public const string ConfigSectionName = "IPDisplaysApiClient";
 

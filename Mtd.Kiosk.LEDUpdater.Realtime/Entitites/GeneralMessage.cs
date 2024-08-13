@@ -1,21 +1,13 @@
 using System.Text.Json.Serialization;
 
-namespace Mtd.Kiosk.LEDUpdater.Realtime.Entitites;
-public class GeneralMessage
+namespace Mtd.Kiosk.LedUpdater.Realtime.Entitites;
+public class GeneralMessage(string stopId, string message, bool blockRealtime)
 {
 	[JsonPropertyName("stopId")]
-	public string StopId { get; set; }
+	public string StopId { get; set; } = stopId;
 	[JsonPropertyName("message")]
-	public string Message { get; set; }
+	public string Message { get; set; } = message;
 
 	[JsonPropertyName("blockRealtime")]
-	public bool BlockRealtime { get; set; }
-
-	public GeneralMessage(string stopId, string message, bool blockRealtime)
-	{
-		StopId = stopId;
-		Message = message;
-		BlockRealtime = blockRealtime;
-	}
-
+	public bool BlockRealtime { get; set; } = blockRealtime;
 }

@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace Mtd.Kiosk.LEDUpdater.Realtime.Entitites;
+namespace Mtd.Kiosk.LedUpdater.Realtime.Entitites;
 
 public class Departure
 {

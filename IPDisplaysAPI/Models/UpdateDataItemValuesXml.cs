@@ -1,6 +1,6 @@
 using System.Xml.Serialization;
 
-namespace Mtd.Kiosk.LEDUpdater.IpDisplaysApi.Models;
+namespace Mtd.Kiosk.LedUpdater.IpDisplaysApi.Models;
 
 /*
  <DataItems>
@@ -29,7 +29,7 @@ public class UpdateDataItemValuesXml
 public class DataItem
 {
 	[XmlAttribute("name")]
-	public string Name { get; set; }
+	public required string Name { get; set; }
 	[XmlText]
-	public string Value { get; set; }
+	public required string Value { get; set; }
 }

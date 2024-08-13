@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace Mtd.Kiosk.LEDUpdater.SanityApi.Schema;
+namespace Mtd.Kiosk.LedUpdater.SanityClient.Schema;
 
 public class SanityApiResponse<T> where T : SanityDocument
 {

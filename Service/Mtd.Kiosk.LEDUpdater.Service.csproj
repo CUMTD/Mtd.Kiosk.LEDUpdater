@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="LEDsignicon.ico" />
+    <Content Include="Ledsignicon.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,7 +31,7 @@
   <ItemGroup>
     <ProjectReference Include="..\IPDisplaysAPI\Mtd.Kiosk.LedUpdater.IpDisplaysApi.csproj" />
     <ProjectReference Include="..\Mtd.Kiosk.LEDUpdater.Realtime\Mtd.Kiosk.LedUpdater.Realtime.csproj" />
-    <ProjectReference Include="..\Mtd.Kiosk.LEDUpdater.SanityClient\Mtd.Kiosk.LedUpdater.SanityApi.csproj" />
+    <ProjectReference Include="..\Mtd.Kiosk.LEDUpdater.SanityClient\Mtd.Kiosk.LedUpdater.SanityClient.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,7 +1,7 @@
 using System.Runtime.InteropServices;
 using Microsoft.Extensions.Hosting;
 
-namespace Mtd.Kiosk.LEDUpdater.Service.Extensions;
+namespace Mtd.Kiosk.LedUpdater.Service.Extensions;
 internal static class IHostBuilderExtensions
 {
 	public static IHostBuilder AddOSSpecificService(this IHostBuilder builder)
@@ -11,7 +11,7 @@ internal static class IHostBuilderExtensions
 		{
 			builder.UseWindowsService(options =>
 			{
-				options.ServiceName = "Mtd.KioskDocument.LEDUpdater";
+				options.ServiceName = "Mtd.KioskDocument.LedUpdater";
 			});
 		}
 		else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
