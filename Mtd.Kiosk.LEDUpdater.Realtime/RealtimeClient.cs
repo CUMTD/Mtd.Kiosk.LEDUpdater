@@ -78,11 +78,11 @@ public class RealtimeClient
 	/// <param name="stopId"></param>
 	/// <param name="cancellationToken"></param>
 	/// <returns>A list of Departure objects.</returns>
-	public async Task<IReadOnlyCollection<Departure>> GetDeparturesForStopIdAsync(string stopId, CancellationToken cancellationToken)
+	public async Task<IReadOnlyCollection<Departure>> GetDeparturesForStopIdAsync(string stopId, string kioskId, CancellationToken cancellationToken)
 	{
 		ArgumentException.ThrowIfNullOrWhiteSpace(stopId, nameof(stopId));
 
-		var request = new HttpRequestMessage(HttpMethod.Get, $"{_config.DeparturesUrl}/{stopId}");
+		var request = new HttpRequestMessage(HttpMethod.Get, $"{_config.DeparturesUrl}/{stopId}?kioskId={kioskId}");
 
 		HttpResponseMessage? response = null;
 		try

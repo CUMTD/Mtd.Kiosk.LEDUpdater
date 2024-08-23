@@ -51,7 +51,7 @@ internal class LedUpdaterService : BackgroundService, IDisposable
 			//_signs.Add(kiosk.Id, _ledSignFactory.CreateLedSign(kiosk.LedIp));
 
 			// fill this kiosk's departures stack
-			var departures = await FetchDepartures(kiosk.StopId, stoppingToken);
+			var departures = await FetchDepartures(kiosk, stoppingToken);
 			if (departures == null) // fetch fails
 			{
 				await _signs[kiosk.Id].BlankScreen();
@@ -78,7 +78,7 @@ internal class LedUpdaterService : BackgroundService, IDisposable
 				if (departuresStack.Count == 0)
 				{
 					_logger.LogTrace("No departures left in stack. Fetching...");
-					var departures = await FetchDepartures(currentKiosk.StopId, stoppingToken);
+					var departures = await FetchDepartures(currentKiosk, stoppingToken);
 
 					if (departures == null) // fetch fails, blank the screen
 					{
@@ -132,17 +132,17 @@ internal class LedUpdaterService : BackgroundService, IDisposable
 		}
 	}
 
-	private async Task<IReadOnlyCollection<Departure>?> FetchDepartures(string stopId, CancellationToken cancellationToken)
+	private async Task<IReadOnlyCollection<Departure>?> FetchDepartures(KioskDocument kiosk, CancellationToken cancellationToken)
 	{
 		try
 		{
-			var departures = await _realtimeClient.GetDeparturesForStopIdAsync(stopId, cancellationToken);
+			var departures = await _realtimeClient.GetDeparturesForStopIdAsync(kiosk.StopId, kiosk.Id, cancellationToken);
 
 			return departures.Reverse().ToArray();
 		}
 		catch (Exception ex)
 		{
-			_logger.LogError(ex, "Failed to fetch departures for {stopId}", stopId);
+			_logger.LogError(ex, "Failed to fetch departures for {stopId}", kiosk.StopId);
 		}
 		return null;
 

@@ -21,9 +21,9 @@ try
 		{
 
 			_ = services
-				.Configure<IpDisplaysApiClientConfig>(context.Configuration.GetSection(IpDisplaysApiClientConfig.ConfigSectionName))
-				.AddOptionsWithValidateOnStart<IpDisplaysApiClientConfig>(IpDisplaysApiClientConfig.ConfigSectionName)
-				.Bind(context.Configuration.GetSection(IpDisplaysApiClientConfig.ConfigSectionName));
+				.Configure<IpDisplaysApiClientConfig>(context.Configuration.GetSection(IpDisplaysApiClientConfig.CONFIG_SECTION_NAME))
+				.AddOptionsWithValidateOnStart<IpDisplaysApiClientConfig>(IpDisplaysApiClientConfig.CONFIG_SECTION_NAME)
+				.Bind(context.Configuration.GetSection(IpDisplaysApiClientConfig.CONFIG_SECTION_NAME));
 
 			_ = services
 				.Configure<SanityClientConfig>(context.Configuration.GetSection(SanityClientConfig.ConfigSectionName))

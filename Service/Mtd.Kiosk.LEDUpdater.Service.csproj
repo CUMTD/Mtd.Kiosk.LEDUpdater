@@ -6,7 +6,7 @@
 	  <ImplicitUsings>enable</ImplicitUsings>
 	  <OutputType>Exe</OutputType>
 	  <UserSecretsId>415bd874-7b19-483e-8387-f1e7451e91ec</UserSecretsId>
-	  <ApplicationIcon>LEDsignicon.ico</ApplicationIcon>
+	  <ApplicationIcon>Ledsignicon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,12 +24,12 @@
     <PackageReference Include="Microsoft.Extensions.Hosting.Systemd" />
     <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" />
     <PackageReference Include="Microsoft.Extensions.Http" />
+    <PackageReference Include="Mtd.Kiosk.IpDisplaysApi" />
     <PackageReference Include="Serilog" />
     <PackageReference Include="Serilog.AspNetCore" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\IPDisplaysAPI\Mtd.Kiosk.LedUpdater.IpDisplaysApi.csproj" />
     <ProjectReference Include="..\Mtd.Kiosk.LEDUpdater.Realtime\Mtd.Kiosk.LedUpdater.Realtime.csproj" />
     <ProjectReference Include="..\Mtd.Kiosk.LEDUpdater.SanityClient\Mtd.Kiosk.LedUpdater.SanityClient.csproj" />
   </ItemGroup>
