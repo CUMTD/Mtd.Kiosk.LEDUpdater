@@ -12,6 +12,9 @@ public class RealtimeClientConfig
 	[Required, Url]
 	public required string GeneralMessagingUrl { get; set; }
 
+	[Required, Url]
+	public required string DarkModeUrl { get; set; }
+
 	[Required]
 	public required string XApiKey { get; set; }
 }
