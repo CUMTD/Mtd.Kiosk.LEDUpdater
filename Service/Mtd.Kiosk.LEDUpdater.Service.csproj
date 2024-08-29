@@ -8,7 +8,7 @@
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<OutputType>Exe</OutputType>
 		<UserSecretsId>415bd874-7b19-483e-8387-f1e7451e91ec</UserSecretsId>
-		<ApplicationIcon>LedSign.ico</ApplicationIcon>
+		<ApplicationIcon>Service/LedSign.ico</ApplicationIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
