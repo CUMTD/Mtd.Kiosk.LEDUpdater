@@ -16,6 +16,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mtd.Kiosk.LedUpdater.Sanity
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mtd.Kiosk.LedUpdater.Realtime", "Realtime\Mtd.Kiosk.LedUpdater.Realtime.csproj", "{FBAAD041-A749-488C-8DB2-7097676A2DAC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{E13B662A-398C-43B4-8101-6DD77E8A1A38}"
+	ProjectSection(SolutionItems) = preProject
+		.github\dependabot.yml = .github\dependabot.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{93726B1A-094E-4563-899A-F7AAE0E38307}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build-test.yml = .github\workflows\build-test.yml
+		.github\workflows\codeql.yml = .github\workflows\codeql.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +48,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{93726B1A-094E-4563-899A-F7AAE0E38307} = {E13B662A-398C-43B4-8101-6DD77E8A1A38}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0F48272F-2156-4A73-A46A-ADB337D9E0F1}
