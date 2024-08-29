@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
@@ -8,12 +8,8 @@
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<OutputType>Exe</OutputType>
 		<UserSecretsId>415bd874-7b19-483e-8387-f1e7451e91ec</UserSecretsId>
-		<ApplicationIcon>Ledsignicon.ico</ApplicationIcon>
+		<ApplicationIcon>LedSign.ico</ApplicationIcon>
 	</PropertyGroup>
-
-	<ItemGroup>
-		<Content Include="Ledsignicon.ico" />
-	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Configuration" />
