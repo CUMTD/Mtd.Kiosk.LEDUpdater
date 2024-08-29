@@ -3,18 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mtd.Kiosk.LedUpdater.Service", "Service\Mtd.Kiosk.LedUpdater.Service.csproj", "{D8D5803A-378B-4AFC-8EB1-8D0FA480AD30}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{57BB1AE9-3C07-4DBA-A9D0-304649B8F545}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
 		Directory.Packages.props = Directory.Packages.props
 	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mtd.Kiosk.LedUpdater.SanityClient", "SanityClient\Mtd.Kiosk.LedUpdater.SanityClient.csproj", "{BB27B801-BBDE-4EDB-BE79-DDEF436DC322}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mtd.Kiosk.LedUpdater.Realtime", "Realtime\Mtd.Kiosk.LedUpdater.Realtime.csproj", "{FBAAD041-A749-488C-8DB2-7097676A2DAC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{E13B662A-398C-43B4-8101-6DD77E8A1A38}"
 	ProjectSection(SolutionItems) = preProject
@@ -27,24 +21,30 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\codeql.yml = .github\workflows\codeql.yml
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mtd.Kiosk.LedUpdater.Realtime", "Realtime\Mtd.Kiosk.LedUpdater.Realtime.csproj", "{BCE4EB5F-DA71-4E85-86B0-9B94C4ABA77F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mtd.Kiosk.LedUpdater.SanityClient", "SanityClient\Mtd.Kiosk.LedUpdater.SanityClient.csproj", "{5619B560-FB52-4BE6-AE49-192E71F80139}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mtd.Kiosk.LEDUpdater.Service", "Service\Mtd.Kiosk.LEDUpdater.Service.csproj", "{C5DCE00A-1DD9-4BBD-B939-839DD275CFFA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D8D5803A-378B-4AFC-8EB1-8D0FA480AD30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D8D5803A-378B-4AFC-8EB1-8D0FA480AD30}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D8D5803A-378B-4AFC-8EB1-8D0FA480AD30}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D8D5803A-378B-4AFC-8EB1-8D0FA480AD30}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BB27B801-BBDE-4EDB-BE79-DDEF436DC322}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BB27B801-BBDE-4EDB-BE79-DDEF436DC322}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BB27B801-BBDE-4EDB-BE79-DDEF436DC322}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BB27B801-BBDE-4EDB-BE79-DDEF436DC322}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FBAAD041-A749-488C-8DB2-7097676A2DAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FBAAD041-A749-488C-8DB2-7097676A2DAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FBAAD041-A749-488C-8DB2-7097676A2DAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FBAAD041-A749-488C-8DB2-7097676A2DAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCE4EB5F-DA71-4E85-86B0-9B94C4ABA77F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCE4EB5F-DA71-4E85-86B0-9B94C4ABA77F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCE4EB5F-DA71-4E85-86B0-9B94C4ABA77F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCE4EB5F-DA71-4E85-86B0-9B94C4ABA77F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5619B560-FB52-4BE6-AE49-192E71F80139}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5619B560-FB52-4BE6-AE49-192E71F80139}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5619B560-FB52-4BE6-AE49-192E71F80139}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5619B560-FB52-4BE6-AE49-192E71F80139}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5DCE00A-1DD9-4BBD-B939-839DD275CFFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5DCE00A-1DD9-4BBD-B939-839DD275CFFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5DCE00A-1DD9-4BBD-B939-839DD275CFFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5DCE00A-1DD9-4BBD-B939-839DD275CFFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
