@@ -4,7 +4,7 @@ namespace Mtd.Kiosk.LedUpdater.Realtime;
 
 public class RealtimeClientConfig
 {
-	public const string ConfigSectionName = "RealtimeClientConfig";
+	public const string CONFIG_SECTION_NAME = "RealtimeClientConfig";
 
 	[Required, Url]
 	public required string DeparturesUrl { get; set; }

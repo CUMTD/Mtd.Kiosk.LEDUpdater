@@ -4,7 +4,7 @@ namespace Mtd.Kiosk.LedUpdater.SanityClient;
 
 public class SanityClientConfig
 {
-	public const string ConfigSectionName = "SanityApi";
+	public const string CONFIG_SECTION_NAME = "SanityApi";
 
 	[Required]
 	public required string ProjectId { get; set; }
