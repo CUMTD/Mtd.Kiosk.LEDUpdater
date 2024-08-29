@@ -12,9 +12,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Packages.props = Directory.Packages.props
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mtd.Kiosk.LedUpdater.SanityClient", "Mtd.Kiosk.LEDUpdater.SanityClient\Mtd.Kiosk.LedUpdater.SanityClient.csproj", "{BB27B801-BBDE-4EDB-BE79-DDEF436DC322}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mtd.Kiosk.LedUpdater.SanityClient", "SanityClient\Mtd.Kiosk.LedUpdater.SanityClient.csproj", "{BB27B801-BBDE-4EDB-BE79-DDEF436DC322}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mtd.Kiosk.LedUpdater.Realtime", "Mtd.Kiosk.LEDUpdater.Realtime\Mtd.Kiosk.LedUpdater.Realtime.csproj", "{FBAAD041-A749-488C-8DB2-7097676A2DAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mtd.Kiosk.LedUpdater.Realtime", "Realtime\Mtd.Kiosk.LedUpdater.Realtime.csproj", "{FBAAD041-A749-488C-8DB2-7097676A2DAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
