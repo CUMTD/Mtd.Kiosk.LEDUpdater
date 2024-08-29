@@ -82,7 +82,7 @@ public class RealtimeClient
 	{
 		ArgumentException.ThrowIfNullOrWhiteSpace(stopId, nameof(stopId));
 
-		var request = new HttpRequestMessage(HttpMethod.Get, $"{_config.DeparturesUrl}/{stopId}?kioskId={kioskId}");
+		var request = new HttpRequestMessage(HttpMethod.Get, $"{_config.DeparturesUrl}/{stopId}/led?kioskId={kioskId}");
 
 		HttpResponseMessage? response = null;
 		try
@@ -122,5 +122,34 @@ public class RealtimeClient
 			_logger.LogError(ex, "Failed to deserialize departures for stop {stopId}.", stopId);
 			throw new Exception($"Failed to deserialize departures for stop {stopId}.", ex);
 		}
+	}
+
+	public async Task<bool> GetDarkModeStatus(CancellationToken cancellationToken)
+	{
+		var request = new HttpRequestMessage(HttpMethod.Get, $"{_config.DarkModeUrl}");
+
+		HttpResponseMessage? response = null;
+		try
+		{
+			request.Headers.Add("X-ApiKey", _config.XApiKey);
+			response = await _httpClient.SendAsync(request, cancellationToken); // TODO: could cache this value?
+			response.EnsureSuccessStatusCode();
+
+			var responseContent = await response.Content.ReadAsStringAsync(cancellationToken);
+			return responseContent == "true";
+
+
+		}
+		catch (HttpRequestException ex)
+		{
+			_logger.LogError(ex, "Dark mode HTTP request did not return a good status code: {code}", response?.StatusCode);
+			throw new Exception($"Dark mode HTTP request did not return a good status code: {response?.StatusCode}", ex);
+		}
+		catch (Exception ex)
+		{
+			_logger.LogError(ex, "Failed to fetch dark mode status");
+			throw new Exception("Failed to fetch dark mode status", ex);
+		}
+
 	}
 }

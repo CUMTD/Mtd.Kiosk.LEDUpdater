@@ -48,7 +48,6 @@ internal class LedUpdaterService : BackgroundService, IDisposable
 		foreach (var kiosk in kiosks)
 		{
 			_signs.Add(kiosk.Id, new LedSign(_ipDisplaysAPIClientFactory.CreateClient(kiosk.LedIp), _logger));
-			//_signs.Add(kiosk.Id, _ledSignFactory.CreateLedSign(kiosk.LedIp));
 
 			// fill this kiosk's departures stack
 			var departures = await FetchDepartures(kiosk, stoppingToken);
@@ -66,6 +65,7 @@ internal class LedUpdaterService : BackgroundService, IDisposable
 		// main loop
 		while (!stoppingToken.IsCancellationRequested)
 		{
+			var darkModeStatus = await FetchDarkModeStatus(stoppingToken);
 			var activeMessages = await FetchGeneralMessages(stoppingToken);
 
 			// send updates to each sign
@@ -73,6 +73,9 @@ internal class LedUpdaterService : BackgroundService, IDisposable
 			{
 				var currentKiosk = kioskDictionary[kioskIdKey];
 				var departuresStack = departuresDictionary[kioskIdKey];
+
+				await _signs[kioskIdKey].UpdateBrightness(darkModeStatus ? _config.DarkModeBrightness : _config.LightModeBrightness);
+
 
 				// refill the stack if empty
 				if (departuresStack.Count == 0)
@@ -129,6 +132,22 @@ internal class LedUpdaterService : BackgroundService, IDisposable
 				}
 			}
 			await Task.Delay(_config.SignUpdateInterval, stoppingToken);
+		}
+	}
+
+	private async Task<bool> FetchDarkModeStatus(CancellationToken stoppingToken)
+	{
+		try
+		{
+			var darkMode = await _realtimeClient.GetDarkModeStatus(stoppingToken);
+			_logger.LogTrace("Dark mode status: {status}", darkMode);
+
+			return darkMode;
+		}
+		catch (Exception ex)
+		{
+			_logger.LogError(ex, "Failed to fetch dark mode status.");
+			return false;
 		}
 	}
 
