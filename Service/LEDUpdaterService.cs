@@ -6,7 +6,6 @@ using Mtd.Kiosk.LedUpdater.Realtime;
 using Mtd.Kiosk.LedUpdater.Realtime.Entitites;
 using Mtd.Kiosk.LedUpdater.SanityClient.Schema;
 
-
 namespace Mtd.Kiosk.LedUpdater.Service;
 internal class LedUpdaterService : BackgroundService, IDisposable
 {
@@ -33,7 +32,7 @@ internal class LedUpdaterService : BackgroundService, IDisposable
 		_logger = logger;
 	}
 
-	protected async override Task ExecuteAsync(CancellationToken stoppingToken)
+	protected override async Task ExecuteAsync(CancellationToken stoppingToken)
 	{
 		_logger.LogInformation("LED Updater Service started.");
 
@@ -75,7 +74,6 @@ internal class LedUpdaterService : BackgroundService, IDisposable
 				var departuresStack = departuresDictionary[kioskIdKey];
 
 				await _signs[kioskIdKey].UpdateBrightness(darkModeStatus ? _config.DarkModeBrightness : _config.LightModeBrightness);
-
 
 				// refill the stack if empty
 				if (departuresStack.Count == 0)
@@ -131,6 +129,7 @@ internal class LedUpdaterService : BackgroundService, IDisposable
 					}
 				}
 			}
+
 			await Task.Delay(_config.SignUpdateInterval, stoppingToken);
 		}
 	}
@@ -163,8 +162,8 @@ internal class LedUpdaterService : BackgroundService, IDisposable
 		{
 			_logger.LogError(ex, "Failed to fetch departures for {stopId}", kiosk.StopId);
 		}
-		return null;
 
+		return null;
 
 	}
 
@@ -180,6 +179,7 @@ internal class LedUpdaterService : BackgroundService, IDisposable
 		{
 			_logger.LogError(ex, "Failed to fetch general messages.");
 		}
+
 		return [];
 	}
 
@@ -206,5 +206,4 @@ internal class LedUpdaterService : BackgroundService, IDisposable
 		_logger.LogInformation("Fetched {count} kiosks with LED signs from Sanity.", kiosks.Count);
 		return kiosks;
 	}
-
 }

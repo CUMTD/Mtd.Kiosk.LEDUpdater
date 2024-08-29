@@ -1,9 +1,9 @@
-using System.Collections.Immutable;
-using System.Text.Json;
-using System.Web;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Mtd.Kiosk.LedUpdater.SanityClient.Schema;
+using System.Collections.Immutable;
+using System.Text.Json;
+using System.Web;
 
 namespace Mtd.Kiosk.LedUpdater.SanityClient;
 

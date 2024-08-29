@@ -1,5 +1,5 @@
-using System.Runtime.InteropServices;
 using Microsoft.Extensions.Hosting;
+using System.Runtime.InteropServices;
 
 namespace Mtd.Kiosk.LedUpdater.Service.Extensions;
 internal static class IHostBuilderExtensions
@@ -23,6 +23,7 @@ internal static class IHostBuilderExtensions
 			var os = RuntimeInformation.IsOSPlatform(OSPlatform.OSX) ? "OSX" : "Unknown OS";
 			throw new PlatformNotSupportedException($"{os} is not supported");
 		}
+
 		return builder;
 	}
 }

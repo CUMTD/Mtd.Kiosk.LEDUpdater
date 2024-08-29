@@ -52,7 +52,6 @@ try
 
 			_ = services.AddHttpClient();
 
-
 			_ = services.AddHostedService<LedUpdaterService>();
 
 		})

@@ -1,8 +1,8 @@
-using System.Collections.Immutable;
-using System.Text.Json;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Mtd.Kiosk.LedUpdater.Realtime.Entitites;
+using System.Collections.Immutable;
+using System.Text.Json;
 
 namespace Mtd.Kiosk.LedUpdater.Realtime;
 
@@ -138,7 +138,6 @@ public class RealtimeClient
 			var responseContent = await response.Content.ReadAsStringAsync(cancellationToken);
 			return responseContent == "true";
 
-
 		}
 		catch (HttpRequestException ex)
 		{
@@ -150,6 +149,5 @@ public class RealtimeClient
 			_logger.LogError(ex, "Failed to fetch dark mode status");
 			throw new Exception("Failed to fetch dark mode status", ex);
 		}
-
 	}
 }
