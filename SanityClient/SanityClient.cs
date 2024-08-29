@@ -35,7 +35,7 @@ public class SanityClient
 	public async Task<IReadOnlyCollection<KioskDocument>> GetKiosks(CancellationToken cancellationToken)
 	{
 		// TODO: remove isDevelopment before deployment
-		const string query = "*[ _type == \"kiosk\" ] [ isDevelopmentKiosk && defined(ledIp) ]{ _id, stopId, displayName, ledIp, isDevelopmentKiosk}";
+		const string query = "*[ _type == \"kiosk\" ] [ useCentralizedService && defined(ledIp) ]{ _id, stopId, displayName, ledIp, useCentralizedService}";
 		var url = $"{GetQueryEndpointAddress()}{HttpUtility.UrlEncode(query)}";
 
 		HttpResponseMessage? responseMessage = null;
