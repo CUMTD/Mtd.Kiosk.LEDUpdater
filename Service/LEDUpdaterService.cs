@@ -61,10 +61,23 @@ internal class LedUpdaterService : BackgroundService, IDisposable
 			}
 		}
 
+		// this will be checked and updated each time the loop runs
+		// we will only update signs if the value has changed.
+		var brightness = _config.LightModeBrightness;
+		var brightnessUpdatePending = true;
+
 		// main loop
 		while (!stoppingToken.IsCancellationRequested)
 		{
+			// check if we need to update the brightness
 			var darkModeStatus = await FetchDarkModeStatus(stoppingToken);
+			var newBrightness = darkModeStatus ? _config.DarkModeBrightness : _config.LightModeBrightness;
+			if (brightness != newBrightness)
+			{
+				brightness = newBrightness;
+				brightnessUpdatePending = true;
+			}
+
 			var activeMessages = await FetchGeneralMessages(stoppingToken);
 
 			// send updates to each sign
@@ -73,7 +86,10 @@ internal class LedUpdaterService : BackgroundService, IDisposable
 				var currentKiosk = kioskDictionary[kioskIdKey];
 				var departuresStack = departuresDictionary[kioskIdKey];
 
-				await _signs[kioskIdKey].UpdateBrightness(darkModeStatus ? _config.DarkModeBrightness : _config.LightModeBrightness);
+				if (brightnessUpdatePending)
+				{
+					await _signs[kioskIdKey].UpdateBrightness(brightness);
+				}
 
 				// refill the stack if empty
 				if (departuresStack.Count == 0)
@@ -130,6 +146,9 @@ internal class LedUpdaterService : BackgroundService, IDisposable
 				}
 			}
 
+			// reset the flag
+			brightnessUpdatePending = false;
+
 			await Task.Delay(_config.SignUpdateInterval, stoppingToken);
 		}
 	}
@@ -145,7 +164,7 @@ internal class LedUpdaterService : BackgroundService, IDisposable
 		}
 		catch (Exception ex)
 		{
-			_logger.LogError(ex, "Failed to fetch dark mode status.");
+			_logger.LogWarning(ex, "Failed to fetch dark mode status.");
 			return false;
 		}
 	}

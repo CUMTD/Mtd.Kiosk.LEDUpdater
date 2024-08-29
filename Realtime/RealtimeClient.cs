@@ -16,7 +16,7 @@ public class RealtimeClient
 	{
 		ArgumentNullException.ThrowIfNull(logger, nameof(logger));
 		ArgumentNullException.ThrowIfNull(httpClient, nameof(httpClient));
-		ArgumentNullException.ThrowIfNull(options, nameof(options));
+		ArgumentNullException.ThrowIfNull(options.Value, nameof(options));
 
 		_logger = logger;
 		_httpClient = httpClient;

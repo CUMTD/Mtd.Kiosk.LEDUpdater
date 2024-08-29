@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Mtd.Kiosk.LedUpdater.Service;
 public class LedUpdaterServiceConfig
 {
-	public const string ConfigSectionName = "LedUpdaterService";
+	public const string CONFIG_SECTION_NAME = "LedUpdaterService";
 
 	[Required]
 	public required int SignUpdateInterval { get; set; }
