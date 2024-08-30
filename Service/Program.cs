@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Mtd.Kiosk.IpDisplaysApi;
 using Mtd.Kiosk.LedUpdater.Realtime;
 using Mtd.Kiosk.LedUpdater.SanityClient;
@@ -9,22 +10,49 @@ using Mtd.Kiosk.LedUpdater.Service;
 using Mtd.Kiosk.LedUpdater.Service.Extensions;
 using Serilog;
 
-var assemblyName = System.Reflection.Assembly.GetExecutingAssembly().GetName()?.Name ?? "Kiosk API";
-var builder = WebApplication.CreateBuilder(args);
+const string LED_PREFIX = "LED_";
 
-// Register the UnobservedTaskException handler
-TaskScheduler.UnobservedTaskException += (sender, e) =>
-{
-	Log.Error(e.Exception, "Unobserved task exception");
-	e.SetObserved(); // Mark exception as handled
-};
+var assemblyName = System.Reflection.Assembly.GetExecutingAssembly().GetName()?.Name ?? "Kiosk API";
+
+var logConfiguration = new ConfigurationBuilder()
+	.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+	.AddEnvironmentVariables(LED_PREFIX)
+	.AddUserSecrets<Program>()
+	.Build();
+
+Log.Logger = new LoggerConfiguration()
+	.ReadFrom.Configuration(logConfiguration)
+	.CreateLogger();
+
+var builder = WebApplication.CreateBuilder(args);
 
 try
 {
+	Log.Information("{assemblyName} is starting.", assemblyName);
+
 	var host = Host
-		// create default builder and add user secrets
 		.CreateDefaultBuilder(args)
+		.UseSerilog()
 		.UseDefaultServiceProvider((context, options) => options.ValidateOnBuild = true)
+		.ConfigureAppConfiguration(configureDelegate: (context, config) =>
+		{
+			_ = config
+				.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+				.AddJsonFile($"appsettings.{context.HostingEnvironment.EnvironmentName}.json", optional: true, reloadOnChange: true);
+
+			_ = config.AddEnvironmentVariables(LED_PREFIX);
+
+			// add user secrets if we're in development
+			if (context.HostingEnvironment.IsDevelopment())
+			{
+				_ = config.AddUserSecrets<Program>();
+			}
+		})
+		.ConfigureLogging(loggingBuilder =>
+		{
+			loggingBuilder.ClearProviders(); // Clear default logging providers
+			loggingBuilder.AddSerilog(); // Add Serilog
+		})
 		.ConfigureServices((context, services) =>
 		{
 
@@ -50,14 +78,15 @@ try
 			_ = services.AddScoped<IpDisplaysApiClientFactory>();
 			_ = services.AddScoped<SanityClient>();
 			_ = services.AddScoped<RealtimeClient>();
-			_ = services.AddScoped<LedUpdaterService>();
+			_ = services.AddScoped<LedDepartureUpdaterService>();
 
 			_ = services
 				.Configure<HostOptions>(hostOptions => hostOptions.BackgroundServiceExceptionBehavior = BackgroundServiceExceptionBehavior.StopHost);
 
 			_ = services.AddHttpClient();
 
-			_ = services.AddHostedService<LedUpdaterService>();
+			_ = services.AddHostedService<LedDepartureUpdaterService>();
+			_ = services.AddHostedService<LedBrightnessService>();
 
 		})
 		.AddOSSpecificService()
