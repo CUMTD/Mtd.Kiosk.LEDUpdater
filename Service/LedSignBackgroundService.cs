@@ -42,6 +42,7 @@ internal abstract class LedSignBackgroundService : BackgroundService, IDisposabl
 
 		// fetch kiosks with LED signs from Sanity
 		var kiosks = await GetKiosksAsync(cancellationToken); // will not return null
+
 		_kiosks.AddRange(kiosks);
 
 		// create a sign client for each IP address
