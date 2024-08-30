@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Mtd.Kiosk.IpDisplaysApi.Models;
 using Mtd.Kiosk.LedUpdater.Realtime.Entitites;
 using System.Collections.Immutable;
 using System.Text.Json;
