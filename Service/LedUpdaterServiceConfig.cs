@@ -7,6 +7,8 @@ public class LedUpdaterServiceConfig
 
 	[Required]
 	public required int SignUpdateInterval { get; set; }
+	[Required]
+	public required int BrightnessUpdateInterval { get; set; }
 
 	[Required, Range(1, 127)]
 	public required int LightModeBrightness { get; set; }

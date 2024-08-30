@@ -78,14 +78,15 @@ try
 			_ = services.AddScoped<IpDisplaysApiClientFactory>();
 			_ = services.AddScoped<SanityClient>();
 			_ = services.AddScoped<RealtimeClient>();
-			_ = services.AddScoped<LedUpdaterService>();
+			_ = services.AddScoped<LedDepartureUpdaterService>();
 
 			_ = services
 				.Configure<HostOptions>(hostOptions => hostOptions.BackgroundServiceExceptionBehavior = BackgroundServiceExceptionBehavior.StopHost);
 
 			_ = services.AddHttpClient();
 
-			_ = services.AddHostedService<LedUpdaterService>();
+			_ = services.AddHostedService<LedDepartureUpdaterService>();
+			_ = services.AddHostedService<LedBrightnessService>();
 
 		})
 		.AddOSSpecificService()
