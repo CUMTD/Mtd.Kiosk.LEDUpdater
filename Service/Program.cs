@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Mtd.Kiosk.LedUpdater.IpDisplaysApi;
+using Mtd.Kiosk.IpDisplaysApi;
 using Mtd.Kiosk.LedUpdater.Realtime;
 using Mtd.Kiosk.LedUpdater.SanityClient;
 using Mtd.Kiosk.LedUpdater.Service;

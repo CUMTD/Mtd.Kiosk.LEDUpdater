@@ -1,7 +1,8 @@
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Mtd.Kiosk.LedUpdater.IpDisplaysApi;
+using Mtd.Kiosk.IpDisplaysApi;
+using Mtd.Kiosk.IpDisplaysApi.Models;
 using Mtd.Kiosk.LedUpdater.Realtime;
 using Mtd.Kiosk.LedUpdater.Realtime.Entitites;
 using Mtd.Kiosk.LedUpdater.SanityClient.Schema;
@@ -46,7 +47,8 @@ internal class LedUpdaterService : BackgroundService, IDisposable
 		// create a sign client for each IP address
 		foreach (var kiosk in kiosks)
 		{
-			_signs.Add(kiosk.Id, new LedSign(_ipDisplaysAPIClientFactory.CreateClient(kiosk.LedIp), _logger));
+			// todo: this kinda funky with all those kiosk.Ids
+			_signs.Add(kiosk.Id, new LedSign(kiosk.Id, _ipDisplaysAPIClientFactory.CreateClient(kiosk.Id, kiosk.LedIp), _logger));
 
 			// fill this kiosk's departures stack
 			var departures = await FetchDepartures(kiosk, stoppingToken);
