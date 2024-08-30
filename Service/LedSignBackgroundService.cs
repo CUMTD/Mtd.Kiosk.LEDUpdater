@@ -48,7 +48,7 @@ internal abstract class LedSignBackgroundService : BackgroundService, IDisposabl
 		// create a sign client for each IP address
 		foreach (var kiosk in kiosks)
 		{
-			_signs.Add(kiosk.Id, new LedSign(kiosk.Id, _ipDisplaysAPIClientFactory.CreateClient(kiosk.Id, kiosk.LedIp), _logger));
+			_signs.Add(kiosk.Id, new LedSign(kiosk.Id, _ipDisplaysAPIClientFactory.CreateClient(kiosk.LedIp, kiosk.Id), _logger));
 		}
 
 		await base.StartAsync(cancellationToken);
