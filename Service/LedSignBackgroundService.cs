@@ -8,6 +8,7 @@ using Mtd.Kiosk.LedUpdater.SanityClient.Schema;
 using Mtd.Kiosk.LedUpdater.Service;
 
 namespace Mtd.Kiosk.LEDUpdater.Service;
+
 internal abstract class LedSignBackgroundService : BackgroundService, IDisposable
 {
 	protected readonly List<KioskDocument> _kiosks = [];
@@ -15,7 +16,7 @@ internal abstract class LedSignBackgroundService : BackgroundService, IDisposabl
 	protected readonly RealtimeClient _realtimeClient;
 	protected readonly IpDisplaysApiClientFactory _ipDisplaysAPIClientFactory;
 	protected readonly SanityClient _sanityApiClient;
-	protected readonly Dictionary<string, LedSign> _signs;
+	protected readonly Dictionary<string, LedSign> _signs = [];
 	protected readonly ILogger<LedSignBackgroundService> _logger;
 
 	protected LedSignBackgroundService(IOptions<LedUpdaterServiceConfig> config, RealtimeClient realtimeClient, IpDisplaysApiClientFactory ipDisplaysClientFactory, SanityClient sanityApiClient, ILogger<LedSignBackgroundService> logger)
@@ -30,16 +31,18 @@ internal abstract class LedSignBackgroundService : BackgroundService, IDisposabl
 		_realtimeClient = realtimeClient;
 		_ipDisplaysAPIClientFactory = ipDisplaysClientFactory;
 		_sanityApiClient = sanityApiClient;
-		_signs = [];
 		_logger = logger;
 	}
 
-	protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+	protected override Task ExecuteAsync(CancellationToken stoppingToken) => Run(stoppingToken);
+
+	public override async Task StartAsync(CancellationToken cancellationToken)
 	{
-		_logger.LogInformation("{service} started.", nameof(LedSignBackgroundService));
+		_logger.LogInformation("{service} started.", GetType().Name);
 
 		// fetch kiosks with LED signs from Sanity
-		var kiosks = await GetKiosksAsync(stoppingToken); // will not return null
+		var kiosks = await GetKiosksAsync(cancellationToken); // will not return null
+
 		_kiosks.AddRange(kiosks);
 
 		// create a sign client for each IP address
@@ -48,7 +51,13 @@ internal abstract class LedSignBackgroundService : BackgroundService, IDisposabl
 			_signs.Add(kiosk.Id, new LedSign(kiosk.Id, _ipDisplaysAPIClientFactory.CreateClient(kiosk.Id, kiosk.LedIp), _logger));
 		}
 
-		await Run(stoppingToken);
+		await base.StartAsync(cancellationToken);
+	}
+
+	public override Task StopAsync(CancellationToken cancellationToken)
+	{
+		_logger.LogInformation("{service} stopped.", GetType().Name);
+		return base.StopAsync(cancellationToken);
 	}
 
 	protected abstract Task Run(CancellationToken cancellationToken);
