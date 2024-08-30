@@ -47,6 +47,7 @@ internal class LedUpdaterService : BackgroundService, IDisposable
 		// create a sign client for each IP address
 		foreach (var kiosk in kiosks)
 		{
+			// todo: this kinda funky with all those kiosk.Ids
 			_signs.Add(kiosk.Id, new LedSign(kiosk.Id, _ipDisplaysAPIClientFactory.CreateClient(kiosk.Id, kiosk.LedIp), _logger));
 
 			// fill this kiosk's departures stack
