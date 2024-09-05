@@ -80,13 +80,13 @@ try
 			_ = services.AddScoped<RealtimeClient>();
 			_ = services.AddScoped<LedDepartureUpdaterService>(); // we will launch these from LedHostedServiceManager
 
-			_ = services
-				.Configure<HostOptions>(hostOptions => hostOptions.BackgroundServiceExceptionBehavior = BackgroundServiceExceptionBehavior.StopHost);
-
 			_ = services.AddHttpClient();
 
 			_ = services.AddHostedService<LedHostedServiceManager>();
 			_ = services.AddHostedService<LedBrightnessService>();
+
+			_ = services
+				.Configure<HostOptions>(hostOptions => hostOptions.BackgroundServiceExceptionBehavior = BackgroundServiceExceptionBehavior.StopHost);
 
 		})
 		.AddOSSpecificService()
