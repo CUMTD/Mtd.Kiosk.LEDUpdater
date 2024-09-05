@@ -7,15 +7,15 @@ using System.Web;
 
 namespace Mtd.Kiosk.LedUpdater.SanityClient;
 
-public class SanityClient
+public class SanityApiClient
 {
-	private readonly ILogger<SanityClient> _logger;
+	private readonly ILogger<SanityApiClient> _logger;
 	private readonly SanityClientConfig _config;
 	private readonly HttpClient _client;
 
 	#region Constructors
 
-	public SanityClient(HttpClient client, IOptions<SanityClientConfig> config, ILogger<SanityClient> logger)
+	public SanityApiClient(HttpClient client, IOptions<SanityClientConfig> config, ILogger<SanityApiClient> logger)
 	{
 		ArgumentNullException.ThrowIfNull(client, nameof(client));
 		ArgumentNullException.ThrowIfNull(config?.Value, nameof(config));
