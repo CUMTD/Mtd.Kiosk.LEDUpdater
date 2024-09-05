@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Mtd.Kiosk.IpDisplaysApi;
@@ -5,133 +6,184 @@ using Mtd.Kiosk.IpDisplaysApi.Models;
 using Mtd.Kiosk.LedUpdater.Realtime;
 using Mtd.Kiosk.LedUpdater.Realtime.Entitites;
 using Mtd.Kiosk.LedUpdater.SanityClient.Schema;
-using Mtd.Kiosk.LEDUpdater.Service;
 
 namespace Mtd.Kiosk.LedUpdater.Service;
-internal class LedDepartureUpdaterService(IOptions<LedUpdaterServiceConfig> config, RealtimeClient realtimeClient, IpDisplaysApiClientFactory ipDisplaysClientFactory, SanityClient.SanityClient sanityApiClient, ILogger<LedDepartureUpdaterService> logger) :
-	LedSignBackgroundService(config, realtimeClient, ipDisplaysClientFactory, sanityApiClient, logger), IDisposable
+internal class LedDepartureUpdaterService : BackgroundService, IHostedService, IDisposable
 {
-	protected override async Task Run(CancellationToken cancellationToken)
-	{
-		// each kiosk will be mapped to a stack of departures
-		var departuresDictionary = _kiosks.ToDictionary(k => k.Id, _ => new Stack<Departure>());
-		var kiosksDictionary = _kiosks.ToDictionary(k => k.Id, k => k);
+	private readonly Stack<Departure> _departuresStack;
+	protected readonly LedUpdaterServiceConfig _config;
+	protected readonly RealtimeClient _realtimeClient;
+	protected readonly IpDisplaysApiClientFactory _ipDisplaysAPIClientFactory;
+	protected readonly SanityClient.SanityApiClient _sanityApiClient;
+	protected readonly Dictionary<string, LedSign> _signs = [];
+	protected readonly ILogger<LedDepartureUpdaterService> _logger;
 
-		// populate departurs for each sign.
-		foreach (var kiosk in _kiosks)
+	public KioskDocument? Kiosk { get; private set; }
+
+	public LedDepartureUpdaterService(
+			IOptions<LedUpdaterServiceConfig> config,
+			RealtimeClient realtimeClient,
+			IpDisplaysApiClientFactory ipDisplaysClientFactory,
+			SanityClient.SanityApiClient sanityApiClient,
+			ILogger<LedDepartureUpdaterService> logger
+		)
+	{
+		ArgumentNullException.ThrowIfNull(config?.Value, nameof(config));
+		ArgumentNullException.ThrowIfNull(realtimeClient, nameof(realtimeClient));
+		ArgumentNullException.ThrowIfNull(ipDisplaysClientFactory, nameof(ipDisplaysClientFactory));
+		ArgumentNullException.ThrowIfNull(sanityApiClient, nameof(sanityApiClient));
+		ArgumentNullException.ThrowIfNull(logger, nameof(logger));
+
+		_departuresStack = new Stack<Departure>();
+		_config = config.Value;
+		_realtimeClient = realtimeClient;
+		_ipDisplaysAPIClientFactory = ipDisplaysClientFactory;
+		_sanityApiClient = sanityApiClient;
+		_logger = logger;
+	}
+	public void SetKiosk(KioskDocument kiosk) => Kiosk = kiosk;
+
+	public override async Task StartAsync(CancellationToken cancellationToken)
+	{
+		_logger.LogInformation("{service} started for {kioskName} ({kioskId}).", nameof(LedDepartureUpdaterService), Kiosk?.DisplayName, Kiosk?.Id);
+		await base.StartAsync(cancellationToken);
+	}
+
+	public override Task StopAsync(CancellationToken cancellationToken)
+	{
+		_logger.LogInformation("{service} stopped for {kioskName} ({kioskId}).", nameof(LedDepartureUpdaterService), Kiosk?.DisplayName, Kiosk?.Id);
+		return base.StopAsync(cancellationToken);
+	}
+
+	protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+	{
+		if (Kiosk == null)
 		{
-			// fill this kiosk's departures stack
-			var departures = await FetchDepartures(kiosk, cancellationToken);
-			if (departures == null) // fetch fails
-			{
-				await _signs[kiosk.Id].BlankScreen();
-			}
-			else
-			{
-				departuresDictionary[kiosk.Id] = new Stack<Departure>(departures);
-				_logger.LogDebug("Updated stack for {kioskName} ({kioskId}) with {count} departures.", kiosk.DisplayName, kiosk.Id, departures.Count);
-			}
+			_logger.LogWarning("Could not start because kiosk has not been set.");
+			return;
 		}
 
+		var sign = new LedSign(Kiosk.Id, _ipDisplaysAPIClientFactory.CreateClient(Kiosk.LedIp, Kiosk.Id), _logger);
+
 		// main loop
-		while (!cancellationToken.IsCancellationRequested)
+		while (!stoppingToken.IsCancellationRequested)
 		{
-			var activeMessages = await FetchGeneralMessages(cancellationToken);
+			var activeKioskMessage = await FetchGeneralMessages(stoppingToken);
 
-			// send updates to each sign
-			foreach (var kioskIdKey in departuresDictionary.Keys)
+			// refill the stack if empty
+			if (_departuresStack.Count == 0)
 			{
-				var currentKiosk = kiosksDictionary[kioskIdKey];
-				var departuresStack = departuresDictionary[kioskIdKey];
-
-				// refill the stack if empty
-				if (departuresStack.Count == 0)
+				_logger.LogTrace("No departures left in stack for {kioskName} ({kioskId}). Fetching...", Kiosk.DisplayName, Kiosk.Id);
+				var updateResult = await UpdateDepartures(stoppingToken);
+				if (!updateResult)
 				{
-					_logger.LogTrace("No departures left in stack for {kioskName} ({kioskId}). Fetching...", currentKiosk.DisplayName, currentKiosk.Id);
-					var departures = await FetchDepartures(currentKiosk, cancellationToken);
-
-					if (departures == null) // fetch fails, blank the screen
-					{
-						await _signs[kioskIdKey].BlankScreen();
-						continue;
-					}
-
-					foreach (var departure in departures)
-					{
-						departuresStack.Push(departure);
-					}
-				}
-
-				// normal operation
-				var activeKioskMessage = activeMessages.Where(m => m.StopId == currentKiosk.StopId).OrderByDescending(m => m.BlockRealtime).FirstOrDefault();
-				if (activeKioskMessage != default) // check for active messages for this kiosk
-				{
-					if (activeKioskMessage.BlockRealtime || departuresStack.Count == 0) // the message blocks realtime OR there are no departures so we need fullscreen
-					{
-						await _signs[kioskIdKey].UpdateSign(activeKioskMessage.Message, string.Empty);
-					}
-					else
-					{
-						// the message occupies one line
-						var departure = departuresStack.Pop();
-						await _signs[kioskIdKey].UpdateSign(activeKioskMessage.Message, departure);
-					}
-				}
-				else // no active messages
-				{
-					if (departuresStack.Count == 0)
-					{
-						await _signs[kioskIdKey].UpdateSign("No departures for at this time.", string.Empty);
-					}
-					else if (departuresStack.Count == 1) // only one departure left
-					{
-						var departure = departuresStack.Pop();
-						await _signs[kioskIdKey].UpdateSign(departure);
-					}
-					else
-					{
-						// regular two line operation
-						var topDeparture = departuresStack.Pop();
-						var bottomDeparture = departuresStack.Pop();
-						await _signs[kioskIdKey].UpdateSign(topDeparture, bottomDeparture);
-					}
+					var wait = _config.SignUpdateInterval;
+					_logger.LogInformation("Failed to fetch departures for {kioskName} ({kioskId}). Waiting {seconds}s and trying again.", Kiosk.DisplayName, Kiosk.Id, wait);
+					await sign.BlankScreen();
+					await Task.Delay(wait, stoppingToken);
+					continue;
 				}
 			}
 
-			await Task.Delay(_config.SignUpdateInterval, cancellationToken);
+			// normal operation
+			if (activeKioskMessage != default) // check for active messages for this kiosk
+			{
+				if (activeKioskMessage.BlockRealtime || _departuresStack.Count == 0) // the message blocks realtime OR there are no departures so we need fullscreen
+				{
+					await sign.UpdateSign(activeKioskMessage.Message, string.Empty);
+				}
+				else
+				{
+					// the message occupies one line
+					var departure = _departuresStack.Pop();
+					await sign.UpdateSign(activeKioskMessage.Message, departure);
+				}
+			}
+			else // no active messages
+			{
+				if (_departuresStack.Count == 0)
+				{
+					await sign.UpdateSign("No departures for at this time.", string.Empty);
+				}
+				else if (_departuresStack.Count == 1) // only one departure left
+				{
+					var departure = _departuresStack.Pop();
+					await sign.UpdateSign(departure);
+				}
+				else
+				{
+					// regular two line operation
+					var topDeparture = _departuresStack.Pop();
+					var bottomDeparture = _departuresStack.Pop();
+					await sign.UpdateSign(topDeparture, bottomDeparture);
+				}
+			}
+
+			await Task.Delay(_config.SignUpdateInterval, stoppingToken);
 		}
 	}
 
-	private async Task<IReadOnlyCollection<Departure>?> FetchDepartures(KioskDocument kiosk, CancellationToken cancellationToken)
+	private async Task<bool> UpdateDepartures(CancellationToken cancellationToken)
 	{
+		var departures = await FetchDepartures(cancellationToken);
+
+		if (departures == null) // fetch fails, blank the screen
+		{
+			_logger.LogWarning("Failed to fetch departures for {kioskName} ({kioskId}).", Kiosk?.DisplayName, Kiosk?.Id);
+			return false;
+		}
+
+		_logger.LogDebug("Fetched {count} departures for {kioskName} ({kioskId}).", departures.Count, Kiosk?.DisplayName, Kiosk?.Id);
+		foreach (var departure in departures)
+		{
+			_departuresStack.Push(departure);
+		}
+
+		return true;
+	}
+
+	private async Task<IReadOnlyCollection<Departure>?> FetchDepartures(CancellationToken cancellationToken)
+	{
+		if (Kiosk == null)
+		{
+			return default;
+		}
+
 		try
 		{
-			var departures = await _realtimeClient.GetDeparturesForStopIdAsync(kiosk.StopId, kiosk.Id, cancellationToken);
+			var departures = await _realtimeClient.GetDeparturesForStopIdAsync(Kiosk.StopId, Kiosk.Id, cancellationToken);
 
 			return departures.Reverse().ToArray();
 		}
 		catch (Exception ex)
 		{
-			_logger.LogError(ex, "Failed to fetch departures for {stopId}", kiosk.StopId);
+			_logger.LogError(ex, "Failed to fetch departures for {stopId}", Kiosk.StopId);
 		}
 
-		return null;
-
+		return default;
 	}
 
-	private async Task<IReadOnlyCollection<GeneralMessage>> FetchGeneralMessages(CancellationToken cancellationToken)
+	private async Task<GeneralMessage?> FetchGeneralMessages(CancellationToken cancellationToken)
 	{
+		if (Kiosk == null)
+		{
+			return default;
+		}
+
 		try
 		{
 			var generalMessages = await _realtimeClient.GetActiveMessagesAsync(cancellationToken);
 			_logger.LogDebug("Fetched {count} general messages.", generalMessages.Count);
-			return generalMessages;
+			return generalMessages
+				.Where(m => m.StopId == Kiosk.StopId)
+				.OrderByDescending(m => m.BlockRealtime)
+				.FirstOrDefault();
 		}
 		catch (Exception ex)
 		{
 			_logger.LogError(ex, "Failed to fetch general messages.");
 		}
 
-		return [];
+		return default;
 	}
 }

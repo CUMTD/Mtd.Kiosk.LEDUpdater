@@ -76,17 +76,17 @@ try
 				.Bind(context.Configuration.GetSection(LedUpdaterServiceConfig.CONFIG_SECTION_NAME));
 
 			_ = services.AddScoped<IpDisplaysApiClientFactory>();
-			_ = services.AddScoped<SanityClient>();
+			_ = services.AddScoped<SanityApiClient>();
 			_ = services.AddScoped<RealtimeClient>();
-			_ = services.AddScoped<LedDepartureUpdaterService>();
-
-			_ = services
-				.Configure<HostOptions>(hostOptions => hostOptions.BackgroundServiceExceptionBehavior = BackgroundServiceExceptionBehavior.StopHost);
+			_ = services.AddScoped<LedDepartureUpdaterService>(); // we will launch these from LedHostedServiceManager
 
 			_ = services.AddHttpClient();
 
-			_ = services.AddHostedService<LedDepartureUpdaterService>();
+			_ = services.AddHostedService<LedHostedServiceManager>();
 			_ = services.AddHostedService<LedBrightnessService>();
+
+			_ = services
+				.Configure<HostOptions>(hostOptions => hostOptions.BackgroundServiceExceptionBehavior = BackgroundServiceExceptionBehavior.StopHost);
 
 		})
 		.AddOSSpecificService()

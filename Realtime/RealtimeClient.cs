@@ -44,12 +44,12 @@ public class RealtimeClient
 		catch (HttpRequestException ex)
 		{
 			_logger.LogError(ex, "General message HTTP request did not return a good status code: {code}", response?.StatusCode);
-			throw new Exception($"General message HTTP request did not return a good status code: {response?.StatusCode}", ex);
+			return [];
 		}
 		catch (Exception ex)
 		{
 			_logger.LogError(ex, "Failed to fetch general messages");
-			throw new Exception("Failed to fetch general messages", ex);
+			return [];
 		}
 
 		try
@@ -69,7 +69,7 @@ public class RealtimeClient
 		catch (Exception ex)
 		{
 			_logger.LogError(ex, "Failed to deserialize general messages");
-			throw new Exception("Failed to deserialize general messages", ex);
+			return [];
 		}
 	}
 
