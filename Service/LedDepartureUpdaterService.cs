@@ -85,38 +85,44 @@ internal class LedDepartureUpdaterService : BackgroundService, IHostedService, I
 				}
 			}
 
+			bool successfullyUpdated = false;
 			// normal operation
 			if (activeKioskMessage != default) // check for active messages for this kiosk
 			{
 				if (activeKioskMessage.BlockRealtime || _departuresStack.Count == 0) // the message blocks realtime OR there are no departures so we need fullscreen
 				{
-					await sign.UpdateSign(activeKioskMessage.Message, string.Empty);
+					successfullyUpdated = await sign.UpdateSign(activeKioskMessage.Message, string.Empty);
 				}
 				else
 				{
 					// the message occupies one line
 					var departure = _departuresStack.Pop();
-					await sign.UpdateSign(activeKioskMessage.Message, departure);
+					successfullyUpdated = await sign.UpdateSign(activeKioskMessage.Message, departure);
 				}
 			}
 			else // no active messages
 			{
 				if (_departuresStack.Count == 0)
 				{
-					await sign.UpdateSign("No departures for at this time.", string.Empty);
+					successfullyUpdated = await sign.UpdateSign("No departures for at this time.", string.Empty);
 				}
 				else if (_departuresStack.Count == 1) // only one departure left
 				{
 					var departure = _departuresStack.Pop();
-					await sign.UpdateSign(departure);
+					successfullyUpdated = await sign.UpdateSign(departure);
 				}
 				else
 				{
 					// regular two line operation
 					var topDeparture = _departuresStack.Pop();
 					var bottomDeparture = _departuresStack.Pop();
-					await sign.UpdateSign(topDeparture, bottomDeparture);
+					successfullyUpdated = await sign.UpdateSign(topDeparture, bottomDeparture);
 				}
+			}
+
+			if (successfullyUpdated)
+			{
+				await _realtimeClient.LogHeartbeat(Kiosk.Id, stoppingToken);
 			}
 
 			await Task.Delay(_config.SignUpdateInterval, stoppingToken);

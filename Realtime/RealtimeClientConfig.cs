@@ -15,6 +15,9 @@ public class RealtimeClientConfig
 	[Required, Url]
 	public required string DarkModeUrl { get; set; }
 
+	[Required, Url]
+	public required string HeartbeatUrl { get; set; }
+
 	[Required]
 	public required string XApiKey { get; set; }
 }
