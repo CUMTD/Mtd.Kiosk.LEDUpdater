@@ -151,4 +151,30 @@ public class RealtimeClient
 			throw new Exception("Failed to fetch dark mode status", ex);
 		}
 	}
+
+	public async Task<bool> LogHeartbeat(string kioskId, CancellationToken cancellationToken)
+	{
+		var request = new HttpRequestMessage(HttpMethod.Post, $"{_config.HeartbeatUrl}/led?kioskId={kioskId}");
+
+		HttpResponseMessage? response = null;
+		try
+		{
+			request.Headers.Add("X-ApiKey", _config.XApiKey);
+			// send in query as kioskId
+			response = await _httpClient.SendAsync(request, cancellationToken);
+			response.EnsureSuccessStatusCode();
+			_logger.LogDebug("Logged heartbeat for {kioskId}", kioskId);
+			return true;
+		}
+		catch (HttpRequestException ex)
+		{
+			_logger.LogError(ex, "Heartbeat HTTP request did not return a good status code: {code}", response?.StatusCode);
+			return false;
+		}
+		catch (Exception ex)
+		{
+			_logger.LogError(ex, "Failed to log heartbeat");
+			return false;
+		}
+	}
 }
